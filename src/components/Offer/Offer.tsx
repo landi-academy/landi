@@ -43,7 +43,7 @@ const Offer = async () => {
             <Image className={styles.imageBg} src={bgImage} alt="bg" />
             <div className={styles.lineBlock}>
               <svg className={styles.line} xmlns="http://www.w3.org/2000/svg" width="291" height="581" viewBox="0 0 291 581" fill="none">
-                <path d="M291 580C130.837 580 1 450.386 1 290.5C1 130.614 130.837 1 291 1" stroke="url(#paint0_linear_67_63)" stroke-opacity="0.6" stroke-width="1.5"></path> <defs> <linearGradient id="paint0_linear_67_63" x1="146" y1="1" x2="146" y2="509" gradientUnits="userSpaceOnUse"> <stop stop-color="white"></stop> <stop offset="1" stop-color="white" stop-opacity="0"></stop> </linearGradient> </defs>
+                <path d="M291 580C130.837 580 1 450.386 1 290.5C1 130.614 130.837 1 291 1" stroke="url(#paint0_linear_67_63)" strokeOpacity="0.6" strokeWidth="1.5"></path> <defs> <linearGradient id="paint0_linear_67_63" x1="146" y1="1" x2="146" y2="509" gradientUnits="userSpaceOnUse"> <stop stopColor="white"></stop> <stop offset="1" stopColor="white" stopOpacity="0"></stop> </linearGradient> </defs>
               </svg>
               <div className={`${styles.highlight} ${styles.highlight1}`}></div>
               <div className={`${styles.highlight} ${styles.highlight2}`}></div>
