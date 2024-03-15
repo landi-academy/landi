@@ -60,13 +60,24 @@
   text-align: center;
 }
 
-.aboutData {
+.wrapper {
   background-color: #23272c;
   color: #fff;
   border-radius: 30px;
   padding-top: clamp(2.5rem, 2.045rem + 2.27vw, 3.75rem);
   padding-bottom: clamp(2.5rem, 2.045rem + 2.27vw, 3.75rem);
   padding-inline: clamp(1.25rem, -1.705rem + 14.77vw, 9.375rem);
+}
+
+.aboutData {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding-inline: 20px;
+  }
 }
 
 .subtitle {
@@ -111,4 +122,30 @@
       top: -5px; /* Выравнивание маркера по верхней границе элемента списка */
     }
   }
+}
+
+.aboutDataImage {
+  // flex: 1;
+  padding: 0 20px;
+  position: relative;
+
+  img {
+    max-width: 260px;
+    object-fit: cover;
+  }
+
+  .imageBg {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.description {
+  font-size: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: center;
 }

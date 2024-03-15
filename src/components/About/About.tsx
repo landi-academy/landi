@@ -5,6 +5,8 @@ import { FaQuoteLeft } from "react-icons/fa";
 import { urlFor } from "@/libs/sanity"
 import styles from './About.module.scss';
 
+import bgImage from '@/images/bg-img.png'
+
 const About = async () => {
 
   const about: AboutSection = await getAboutSection();
@@ -30,18 +32,34 @@ const About = async () => {
         </div>
         <div className={styles.aboutContent}>
           <h2 className={styles.title}>{about.title}</h2>
-          <div className={styles.aboutData}>
-            <h3 className={styles.subtitle}>{about.name}</h3>
-            <p className={styles.subtext}>{about.profession}</p>
-            <ul className={styles.aboutBullets}>
-              {about.aboutBullets.map((bullet, index) => (
-                <li
-                  key={bullet._key}
-                  className={styles.bulletItem}
-                >
-                  {bullet.text}</li>
-              ))}
-            </ul>
+          <div className={styles.wrapper}>
+            <div className={styles.aboutData}>
+              <div className={styles.aboutDataText}>
+                <h3 className={styles.subtitle}>{about.name}</h3>
+                <p className={styles.subtext}>{about.profession}</p>
+                <ul className={styles.aboutBullets}>
+                  {about.aboutBullets.map((bullet) => (
+                    <li
+                      key={bullet._key}
+                      className={styles.bulletItem}
+                    >
+                      {bullet.text}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.aboutDataImage}>
+                <Image
+                  src={urlFor(about.image).url()}
+                  width={500}
+                  height={500}
+                  alt={about.name}
+                />
+                <Image className={styles.imageBg} src={bgImage} alt="bg" />
+              </div>
+            </div>
+            <div className={styles.descriptionBlock}>
+              <p className={styles.description}>{about.shortText}</p>
+            </div>
           </div>
         </div>
       </div>
