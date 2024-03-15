@@ -38,8 +38,8 @@ const Reason = () => {
               <div className={styles.imageBlock}>
                 <Image
                   src={urlFor(reason.image).url()}
-                  width={250}
-                  height={250}
+                  width={350}
+                  height={350}
                   alt="landi academy"
                   className={styles.img}
                 />

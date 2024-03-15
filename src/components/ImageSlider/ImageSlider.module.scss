@@ -1,0 +1,9 @@
+.imageContainer {
+  position: relative;
+  width: 100%; /* Желаемая ширина */
+  height: 350px; /* Желаемая высота */
+}
+
+.imageContainer img {
+  object-fit: contain; //important
+}

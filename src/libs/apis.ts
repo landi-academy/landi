@@ -44,6 +44,16 @@ export const getWhySection = async () => {
   return result;
 }
 
+export const getReviewsPictures = async () => {
+  const result = await sanityClient.fetch(
+    queries.getReviewsPicturesQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
 export const getFooter = async () => {
   const result = await sanityClient.fetch(
     queries.getFooterQuery,

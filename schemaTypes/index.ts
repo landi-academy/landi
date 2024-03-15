@@ -5,6 +5,7 @@ import blockContent from "./blockContent";
 import whySection from "./whySection";
 import contact from "./contact";
 import footer from "./footer";
+import reviewsPictures from "./reviewsPictures";
 
 export const schemaTypes = [
   header,
@@ -12,6 +13,7 @@ export const schemaTypes = [
   offerSection,
   aboutSection,
   whySection,
+  reviewsPictures,
   contact,
   footer,
 ]
