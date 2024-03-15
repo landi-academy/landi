@@ -43,3 +43,13 @@ export const getWhySection = async () => {
 
   return result;
 }
+
+export const getFooter = async () => {
+  const result = await sanityClient.fetch(
+    queries.getFooterQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}

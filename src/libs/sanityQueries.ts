@@ -50,3 +50,19 @@ export const getWhySectionQuery = groq`*[_type == "whySection"][0] {
   image,
   bodyRight,
 }`;
+
+export const getFooterQuery = groq`*[_type == "footer"][0] {
+  _id,
+  footerTitle,
+  footerLogo,
+  "footerMenuItems": footerMenuItems[]{
+    "label": label,
+    "link": link,
+  },
+  "footerSocialMedia": footerSocialMedia[]{
+    "icon": icon,
+    "label": label,
+    "link": link,
+  },
+  footerCopyRight
+}`;
