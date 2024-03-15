@@ -6,11 +6,12 @@ type Image = {
 };
 
 type AboutBullet = {
+  _key: string;
   _type: 'object';
   text: string;
 }
 
-type AboutSection = {
+export type AboutSection = {
   _type: 'aboutSection';
   roundImage: Image;
   quote: string;

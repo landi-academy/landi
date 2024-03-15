@@ -1,0 +1,114 @@
+.about {
+  position: relative;
+  top: -100px;
+
+  @media (max-width: 768px) {
+    top: -60px;
+  }
+}
+
+.quoteBlock {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+.quoteBlockImage {
+  flex: 1;
+
+  img {
+    
+    @media (max-width: 768px) {
+      max-width: 250px;
+    }
+  }
+}
+
+.quoteBlockContent {
+  flex: 2;
+  padding: 0 20px;
+}
+
+.quote {
+  font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.signatureText {
+  font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
+  font-weight: 500;
+  margin-bottom: 20px;
+
+  span {
+    color: #ff66c4;
+  }
+}
+
+.title {
+  font-size: clamp(2.188rem, 1.847rem + 1.7vw, 3.125rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #ff66c4;
+  text-align: center;
+}
+
+.aboutData {
+  background-color: #23272c;
+  color: #fff;
+  border-radius: 30px;
+  padding-top: clamp(2.5rem, 2.045rem + 2.27vw, 3.75rem);
+  padding-bottom: clamp(2.5rem, 2.045rem + 2.27vw, 3.75rem);
+  padding-inline: clamp(1.25rem, -1.705rem + 14.77vw, 9.375rem);
+}
+
+.subtitle {
+  font-size: clamp(1.563rem, 1.318rem + 1.7vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #ff66c4;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.subtext {
+  font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
+  line-height: 1.5;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+}
+
+.aboutBullets {
+
+  .bulletItem {
+    list-style-type: none;
+    margin-left: 5px;
+    padding-left: 35px;
+    font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+    position: relative; 
+    margin-bottom: 20px;
+
+    &:before {
+      content: "•"; /* Используем символ для маркера */
+      color: #ff66c4; /* Цвет маркера */
+      font-size: 24px; /* Размер маркера */
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); /* Добавляем тень */
+      position: absolute;
+      left: 0; /* Позиционируем маркер слева от текста */
+      top: -5px; /* Выравнивание маркера по верхней границе элемента списка */
+    }
+  }
+}

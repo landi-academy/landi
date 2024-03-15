@@ -10,8 +10,6 @@ const Offer = async () => {
 
   const offer: OfferSection = await getOfferSection();
 
-  // console.log("offer", offer.offersList)
-
   return (
     <section className={styles.offer}>
       <div className="container">
@@ -24,11 +22,9 @@ const Offer = async () => {
             </h1>
             <p className={styles.offerDescription}>{offer.description}</p>
             <ul className={styles.offerList}>
-            <ul className={styles.offerList}>
               {offer.offersList.map((offerItem, index) => (
                 <li key={index} className={styles.offerItem}>{offerItem.text}</li>
               ))}
-            </ul>
             </ul>
             <button className={styles.offerButton}>{offer.textButton}</button>
           </div>

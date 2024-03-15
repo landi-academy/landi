@@ -30,7 +30,7 @@ export type OfferSection = {
   title: string;
   description: string;
   offersList: OffersList; // Используем обновленный тип
-  bulletList: BulletsList;
+  bulletsList: BulletsList;
   name: string;
   profession: string;
   textButton: string;

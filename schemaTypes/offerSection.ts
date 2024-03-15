@@ -42,7 +42,7 @@ const offerSection = {
       ],
     },
     {
-      name: 'bullestList',
+      name: 'bulletsList', // Исправлено здесь
       title: 'Bullets List',
       type: 'array',
       of: [

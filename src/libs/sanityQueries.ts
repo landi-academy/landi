@@ -18,11 +18,27 @@ export const getOfferSectionQuery = groq`*[_type == "offerSection"][0] {
     _key,
     text,
   },
-  "bullestList": bullestList[]{
+  "bulletsList": bulletsList[]{
     _key,
     text,
   },
   name,
   profession,
   textButton,
+}`;
+
+export const getAboutSectionQuery = groq`*[_type == "aboutSection"][0] {
+  _id,
+  roundImage,
+  quote,
+  title,
+  description,
+  image,
+  name,
+  profession,
+  "aboutBullets": aboutBullets[]{
+    _key,
+    text,
+  },
+  shortText,
 }`;

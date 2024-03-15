@@ -23,3 +23,13 @@ export const getOfferSection = async () => {
   
   return result;
 }
+
+export const getAboutSection = async () => {
+  const result = await sanityClient.fetch(
+    queries.getAboutSectionQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
