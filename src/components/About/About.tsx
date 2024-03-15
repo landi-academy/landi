@@ -11,7 +11,7 @@ const About = async () => {
 
   const about: AboutSection = await getAboutSection();
 
-  console.log("about", about)
+  // console.log("about", about)
 
   return (
     <section className={styles.about}>

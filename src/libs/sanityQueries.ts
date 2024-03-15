@@ -42,3 +42,11 @@ export const getAboutSectionQuery = groq`*[_type == "aboutSection"][0] {
   },
   shortText,
 }`;
+
+export const getWhySectionQuery = groq`*[_type == "whySection"][0] {
+  _id,
+  title,
+  bodyLeft,
+  image,
+  bodyRight,
+}`;

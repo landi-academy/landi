@@ -33,3 +33,13 @@ export const getAboutSection = async () => {
 
   return result;
 }
+
+export const getWhySection = async () => {
+  const result = await sanityClient.fetch(
+    queries.getWhySectionQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}

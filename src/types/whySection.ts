@@ -5,7 +5,7 @@ type Image = {
   url: string;
 };
 
-export type BlogPost = {
+export type WhySection = {
   _id: string;
   title: string;
   bodyLeft: any;
