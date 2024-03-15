@@ -9,6 +9,8 @@ import bgImage from '@/images/bg-img.png'
 const Offer = async () => {
 
   const offer: OfferSection = await getOfferSection();
+  
+  // console.log("offer", offer.bulletsList);
 
   return (
     <section className={styles.offer}>
@@ -41,10 +43,13 @@ const Offer = async () => {
               <svg className={styles.line} xmlns="http://www.w3.org/2000/svg" width="291" height="581" viewBox="0 0 291 581" fill="none">
                 <path d="M291 580C130.837 580 1 450.386 1 290.5C1 130.614 130.837 1 291 1" stroke="url(#paint0_linear_67_63)" strokeOpacity="0.6" strokeWidth="1.5"></path> <defs> <linearGradient id="paint0_linear_67_63" x1="146" y1="1" x2="146" y2="509" gradientUnits="userSpaceOnUse"> <stop stopColor="white"></stop> <stop offset="1" stopColor="white" stopOpacity="0"></stop> </linearGradient> </defs>
               </svg>
-              <div className={`${styles.highlight} ${styles.highlight1}`}></div>
-              <div className={`${styles.highlight} ${styles.highlight2}`}></div>
-              <div className={`${styles.highlight} ${styles.highlight3}`}></div>
-              <div className={`${styles.highlight} ${styles.highlight4}`}></div>
+              {offer.bulletsList.map((bullet, index) => (
+                <div key={bullet._key} className={`${styles.highlight} ${styles[`highlight${index + 1}`]}`}>
+                  <div className={styles.highlightText}>
+                    {bullet.text}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           

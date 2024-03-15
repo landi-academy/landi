@@ -153,6 +153,10 @@
     color: #fff;
     transition: all ease-in-out 0.2s;
 
+    &:hover {
+      color: #ff66c4;
+    }
+
     &::after {
       content: "";
       display: block;
@@ -164,7 +168,6 @@
 
     &:hover {
       @media (min-width: 768px) {
-
         &::after {
           width: 100%;
         }
@@ -178,7 +181,7 @@
     display: block;
     width: 0;
     height: 1px;
-    background-color: #fff;
+    background-color: #ff66c4;
     transition: all ease-in-out 0.2s;
   }
 

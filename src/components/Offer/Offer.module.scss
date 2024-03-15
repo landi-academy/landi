@@ -120,12 +120,16 @@
   position: absolute;
   bottom: 0; // Центрирование по вертикали относительно основного изображения
   // transform: translateY(50%); // Дополнительно центрируем по вертикали
-  right: 350px; // Смещаем влево относительно левого края основного изображения
+  right: 380px; // Смещаем влево относительно левого края основного изображения
   width: 290px; // Устанавливаем ширину SVG
   height: 550px; // Автоматическая высота для сохранения пропорций
   max-width: 220px; // Максимальная ширина, чтобы избежать слишком большого растягивания
   // z-index: -1; // Убедитесь, что дуга не перекрывает интерактивные элементы
   // transform: rotate(10deg);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .line {
@@ -138,6 +142,7 @@
   height: 10px;
   background-color: #fff;
   border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 102, 196, 0.5);
 }
 
 .highlight1 {
@@ -149,17 +154,24 @@
 .highlight2 {
   position: absolute;
   top: 150px;
-  left: 30px;
+  left: 32px;
 }
 
 .highlight3 {
   position: absolute;
   bottom: 240px;
-  left: 0;
+  left: -2px;
 }
 
 .highlight4 {
   position: absolute;
   bottom: 110px;
   right: 145px;
+}
+
+.highlightText {
+  font-size: 12px;
+  width: 140px;
+  position: relative;
+  left: 30px;
 }
