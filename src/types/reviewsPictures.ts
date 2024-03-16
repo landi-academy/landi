@@ -1,22 +1,15 @@
-export type ImageAssetReference = {
+export type SanityAssetReference = {
     _ref: string;
-    _type: 'reference';
 };
 
-export type ImageFile = {
-    _type: 'image';
-    asset: ImageAssetReference;
-};
-
-export type Image = {
+export type SanityImage = {
     _key: string;
-    url?: string; // URL теперь опциональный, поскольку мы будем использовать _ref для получения URL
-    file: ImageFile;
-    alt: string;
+    alt?: string;
+    asset: SanityAssetReference; // Указываем, что asset это ссылка
 };
 
 export type ReviewsPictures = {
     _type: "reviewsPictures";
     _id: string;
-    images: Image[];
+    images: SanityImage[]; // Массив объектов изображений
 };

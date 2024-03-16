@@ -53,7 +53,11 @@ export const getWhySectionQuery = groq`*[_type == "whySection"][0] {
 
 export const getReviewsPicturesQuery = groq`*[_type == "reviewsPictures"][0] {
   _id,
-  images,
+  images[]{
+    _key,
+    alt,
+    "asset": asset->
+  }
 }`;
 
 export const getFooterQuery = groq`*[_type == "footer"][0] {
