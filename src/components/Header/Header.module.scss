@@ -195,6 +195,10 @@
     }
 }
 
+.menuItemLink.active {
+  color: #ff66c4;
+}
+
 .rotateIcon {
   transform: rotate(180deg);
   transition: transform 0.2s ease-in-out; // Плавная анимация поворота

@@ -14,7 +14,7 @@ const About = async () => {
   // console.log("about", about)
 
   return (
-    <section className={styles.about}>
+    <section id="about" className={styles.about}>
       <div className="container">
         <div className={styles.quoteBlock}>
           <div className={styles.quoteBlockImage}>

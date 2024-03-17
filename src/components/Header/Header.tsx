@@ -16,6 +16,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [activeNavItem, setActiveNavItem] = useState('');
+  const [activeSection, setActiveSection] = useState('');
 
   const fetchData = async () => {
     try {
@@ -27,21 +29,10 @@ const Header = () => {
   };
 
   useEffect(() => {
-    fetchData();
-
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); 
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOpenSubMenu(null);
@@ -55,14 +46,58 @@ const Header = () => {
       }
     };
 
+    const handleScroll = () => {
+      let closestSectionId = '';
+      let smallestDistance = Infinity;
+      navbarData?.menuItems.forEach((menuItem) => {
+        const sectionElement = document.getElementById(menuItem.link);
+        if (sectionElement) {
+          const distance = Math.abs(sectionElement.getBoundingClientRect().top);
+          if (distance < smallestDistance) {
+            smallestDistance = distance;
+            closestSectionId = menuItem.link;
+          }
+        }
+      });
+
+      setActiveSection(closestSectionId);
+    };
+
+    // Подписки
+    window.addEventListener('resize', handleResize);
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('mousedown', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
+    
+    // Вызов handleResize для инициализации состояния
+    handleResize();
 
+    // Запрос данных
+    fetchData();
+
+    // Отписки
     return () => {
+      window.removeEventListener('resize', handleResize);
       document.removeEventListener('keydown', handleKeyDown);
       document.removeEventListener('mousedown', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [navbarData]);
+
+
+  const scrollToSection = (sectionId: string) => {
+    // Найдите элемент с указанным id
+    const sectionElement = document.getElementById(sectionId);
+    if (sectionElement) {
+      // Вычислите позицию элемента относительно верхней части страницы
+      const offset = sectionElement.offsetTop;
+      // Выполните плавный скролл
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -84,6 +119,23 @@ const Header = () => {
   if (!navbarData) {
     return null;
   }
+
+  const handleScroll = () => {
+    let closestSectionId = '';
+    let smallestDistance = Infinity;
+    navbarData.menuItems.forEach((menuItem) => {
+      const sectionElement = document.getElementById(menuItem.link);
+      if (sectionElement) {
+        const distance = Math.abs(sectionElement.getBoundingClientRect().top);
+        if (distance < smallestDistance) {
+          smallestDistance = distance;
+          closestSectionId = menuItem.link;
+        }
+      }
+    });
+
+    setActiveSection(closestSectionId);
+  };
 
   return (
     <header className={styles.header}>
@@ -119,9 +171,16 @@ const Header = () => {
               <ul className={styles.menuItems}>
                 {navbarData.menuItems.map((menuItem, index) => (
                   <li key={index} className={styles.menuItem} onClick={() => toggleSubMenu(menuItem.label)}>
-                    <Link className={styles.menuItemLink} onClick={handleLinkClick} href={menuItem.link}>
+                    <a 
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(menuItem.link);
+                        handleLinkClick();
+                      }} 
+                      className={`${styles.menuItemLink} ${activeSection === menuItem.link ? styles.active : ''}`}
+                    >
                       {menuItem.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>

@@ -20,7 +20,7 @@ const Reviews = () => {
   if (!reviews) return <div>Loading...</div>;
 
   return (
-    <section className={styles.reviews}>
+    <section id='reviews' className={styles.reviews}>
       {/* <div className="container"> */}
         <h2 className={styles.title}>Recenzje moich klientów</h2>
         <div className={styles.reviewsWrapper}>

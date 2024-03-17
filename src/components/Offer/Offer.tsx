@@ -13,7 +13,7 @@ const Offer = async () => {
   // console.log("offer", offer.bulletsList);
 
   return (
-    <section className={styles.offer}>
+    <section id='offer' className={styles.offer}>
       <div className="container">
         <div className={styles.offerWrapper}>
           <div className={styles.offerContent}>

@@ -11,7 +11,7 @@ const Contact = async () => {
   const contact: ContactType = await getContact();
 
   return (
-    <section className={styles.contact}>
+    <section id='contact' className={styles.contact}>
       <div className="container">
         <div className={styles.contactWrapper}>
           <div className={`${styles.contactFlex} ${styles.contactContent}`}>
