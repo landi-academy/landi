@@ -60,6 +60,13 @@ export const getReviewsPicturesQuery = groq`*[_type == "reviewsPictures"][0] {
   }
 }`;
 
+export const getContactQuery = groq`*[_type == "contact"][0] {
+  _id,
+  contactTitle,
+  contactDescription,
+  contactImage,
+}`;
+
 export const getFooterQuery = groq`*[_type == "footer"][0] {
   _id,
   footerTitle,

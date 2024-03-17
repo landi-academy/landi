@@ -1,0 +1,86 @@
+.contact {
+  background-color: #23272c;
+  color: #fff;
+  padding-top: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
+  padding-bottom: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
+}
+
+.contactWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(1.25rem, 0.682rem + 2.84vw, 2.813rem);
+  position: relative;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.contactTitle {
+  font-size: clamp(2.188rem, 1.847rem + 1.7vw, 3.125rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #ff66c4;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+}
+
+.contactDescription {
+  font-size: clamp(1rem, 0.818rem + 0.91vw, 1.5rem);
+  font-weight: 300;
+  margin-bottom: clamp(1.25rem, 0.795rem + 2.27vw, 2.5rem);
+}
+
+.contactFlex {
+  flex: 1;
+}
+
+.contactContent {
+  padding: 0 40px;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.contactImage {
+  position: relative;
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.img {
+  width: 100%;
+  filter: drop-shadow(-3px -6px 12px #000000);
+  border-radius: 20px;
+  object-fit: cover;
+  aspect-ratio: 4 / 6;
+  
+  @media (min-width: 768px) {
+    margin-left: auto;
+    max-width: 400px;
+    height: auto;
+  }
+}
+
+.contactImageOverlay {
+
+  @media (max-width: 768px) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #23272c;
+    opacity: 0.7;
+    z-index: 1;
+    border-radius: 20px;
+  }
+}

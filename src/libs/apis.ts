@@ -54,6 +54,16 @@ export const getReviewsPictures = async () => {
   return result;
 }
 
+export const getContact = async () => {
+  const result = await sanityClient.fetch(
+    queries.getContactQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
 export const getFooter = async () => {
   const result = await sanityClient.fetch(
     queries.getFooterQuery,
