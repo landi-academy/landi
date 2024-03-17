@@ -52,23 +52,24 @@
 
 .contactImage {
   position: relative;
-  @media screen and (max-width: 768px) {
-    position: absolute;
-    width: 100%;
-  }
+  // @media screen and (max-width: 768px) {
+  //   position: absolute;
+  //   width: 100%;
+  // }
 }
 
 .img {
-  width: 100%;
+  // width: 100%;
   filter: drop-shadow(-3px -6px 12px #000000);
   border-radius: 20px;
   object-fit: cover;
-  aspect-ratio: 4 / 6;
+  aspect-ratio: 3/2;
   
   @media (min-width: 768px) {
     margin-left: auto;
     max-width: 400px;
     height: auto;
+    aspect-ratio: 4/6;
   }
 }
 

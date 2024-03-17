@@ -20,7 +20,7 @@ const Contact = async () => {
               <ContactForm />
           </div>
           <div className={`${styles.contactFlex}  ${styles.contactImage}`}>
-            <div className={styles.contactImageOverlay}></div>
+            {/* <div className={styles.contactImageOverlay}></div> */}
             <Image
               src={urlFor(contact.contactImage).url()}
               width={500}

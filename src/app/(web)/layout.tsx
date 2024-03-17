@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins, Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ weight: ['100', '300', '400', '700', '900'], subsets: ["latin"] });
+const outfit = Outfit({ weight: ['100', '300', '400', '700', '900'], subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Centrum Szkoleń Online Landi Academy",
@@ -18,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <Header />
         {children}
         <Footer />
