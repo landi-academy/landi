@@ -1,5 +1,5 @@
 import styles from './Contact.module.scss';
-import { Contact } from '@/types/contact';
+import { Contact as ContactType } from '@/types/contact';
 import { getContact } from '@/libs/apis';
 import Image from 'next/image';
 import { urlFor } from '@/libs/sanity';
@@ -8,7 +8,7 @@ import ContactForm from '../ContactForm/ContactForm';
 
 const Contact = async () => {
 
-  const contact: Contact = await getContact();
+  const contact: ContactType = await getContact();
 
   return (
     <section className={styles.contact}>
