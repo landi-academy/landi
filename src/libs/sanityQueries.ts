@@ -12,6 +12,7 @@ export const getHeaderQuery = groq`*[_type == "header"][0] {
 export const getOfferSectionQuery = groq`*[_type == "offerSection"][0] {
   _id,
   image,
+  preTitle,
   title,
   description,
   "offersList": offersList[]{
@@ -24,6 +25,8 @@ export const getOfferSectionQuery = groq`*[_type == "offerSection"][0] {
   },
   name,
   profession,
+  priceOld,
+  priceNew,
   textButton,
 }`;
 

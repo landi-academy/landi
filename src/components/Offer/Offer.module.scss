@@ -19,16 +19,25 @@
   }
 }
 
+.offerPreTitle {
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  font-weight: 700;
+  color: #fff;
+}
+
 .offerTitle {
   font-size: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 40px;
   color: #ff66c4;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(223, 63, 63, 0.5); /* Тень */
+  -webkit-text-stroke: 1px rgba(223, 63, 63, 0.5); /* Контур */
 }
 
 .offerContent {
-  flex: 0 0 40%;
+  flex: 0 0 50%;
 
   @media (max-width: 768px) {
     flex: 0 0 100%;
@@ -66,6 +75,25 @@
       top: -5px; /* Выравнивание маркера по верхней границе элемента списка */
     }
   }
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 40px;
+}
+
+.priceOld {
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  text-decoration: line-through;
+  color: #ff66c4;
+}
+
+.priceNew {
+  font-size: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
+  font-weight: 600;
+  color: #fff;
 }
 
 .offerButton {
@@ -120,14 +148,14 @@
   position: absolute;
   bottom: 0; // Центрирование по вертикали относительно основного изображения
   // transform: translateY(50%); // Дополнительно центрируем по вертикали
-  right: 380px; // Смещаем влево относительно левого края основного изображения
+  right: 350px; // Смещаем влево относительно левого края основного изображения
   width: 290px; // Устанавливаем ширину SVG
   height: 550px; // Автоматическая высота для сохранения пропорций
   max-width: 220px; // Максимальная ширина, чтобы избежать слишком большого растягивания
   // z-index: -1; // Убедитесь, что дуга не перекрывает интерактивные элементы
   // transform: rotate(10deg);
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 920px) {
     display: none;
   }
 }

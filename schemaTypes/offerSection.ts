@@ -12,6 +12,12 @@ const offerSection = {
       validation: (Rule: Rule) => Rule.required()
     },
     {
+      name: 'preTitle',
+      title: 'Pre Title',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required()
+    },
+    {
       name: 'title',
       title: 'Title',
       type: 'string',
@@ -68,6 +74,18 @@ const offerSection = {
     {
       name: 'profession',
       title: 'Profession',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required()
+    },
+    {
+      name: 'priceOld',
+      title: 'Price Old',
+      type: 'string',
+      validation: (Rule: Rule) => Rule.required()
+    },
+    {
+      name: 'priceNew',
+      title: 'Price New',
       type: 'string',
       validation: (Rule: Rule) => Rule.required()
     },

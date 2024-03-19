@@ -27,11 +27,14 @@ export type OfferSection = {
   _id: string;
   _type: 'offerSection';
   image: Image;
+  preTitle: string;
   title: string;
   description: string;
   offersList: OffersList; // Используем обновленный тип
   bulletsList: BulletsList;
   name: string;
   profession: string;
+  priceOld: string;
+  priceNew: string;
   textButton: string;
 };

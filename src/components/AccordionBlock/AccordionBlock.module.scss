@@ -13,6 +13,10 @@
   padding-inline: 20px;
   margin-bottom: 20px;
   border-bottom: 1px solid #ff66c4;
+
+  @media (max-width: 768px) {
+    padding-inline: 0;
+  }
 }
 
 .itemsWrapper {
@@ -20,7 +24,7 @@
 }
 
 .itemLabel {
-  font-size: 22px;
+  font-size: clamp(1.125rem, 1.034rem + 0.45vw, 1.375rem);
   font-weight: 500;
   color: #010101;
   margin-bottom: 10px;
@@ -47,10 +51,14 @@
 .subItems {
   margin-left: 30px;
   margin-bottom: 20px;
+
+  @media screen and (max-width: 768px){
+    margin-left: 15px;
+  }
 }
 
 .subLabel {
-  font-size: 18px;
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
   font-weight: 400;
   color: #010101;
   margin-bottom: 10px;

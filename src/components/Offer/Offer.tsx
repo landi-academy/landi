@@ -1,3 +1,4 @@
+import { Roboto, Give_You_Glory, Gochi_Hand, Fuzzy_Bubbles } from "next/font/google";
 import { OfferSection } from '@/types/offerSection';
 import { getOfferSection } from '@/libs/apis';
 import styles from './Offer.module.scss';
@@ -5,6 +6,12 @@ import Image from 'next/image';
 import { urlFor } from '@/libs/sanity';
 
 import bgImage from '@/images/bg-img.png'
+
+const roboto = Roboto({ weight: ['100', '300', '400', '700', '900'], subsets: ["latin"] });
+const giveYouGlory = Give_You_Glory({ weight: ['400'], subsets: ["latin"] });
+const gochiHand = Gochi_Hand({ weight: ['400'], subsets: ["latin"] });
+const fuzzyBubbles = Fuzzy_Bubbles({ weight: ['400', '700'], subsets: ["latin"] });
+
 
 const Offer = async () => {
 
@@ -17,17 +24,18 @@ const Offer = async () => {
       <div className="container">
         <div className={styles.offerWrapper}>
           <div className={styles.offerContent}>
-            <h1 className={styles.offerTitle}>
-              <span className={styles.firstWordTitle}>{offer.title.split(' ')[0]}</span>
-              {/* Проверяем, есть ли в заголовке более одного слова, и если да, добавляем оставшийся текст */}
-              {offer.title.split(' ').length > 1 ? ` ${offer.title.split(' ').slice(1).join(' ')}` : ''}
-            </h1>
-            <p className={styles.offerDescription}>{offer.description}</p>
+            <p className={`${styles.offerPreTitle} ${fuzzyBubbles.className}`}>{offer.preTitle}</p>
+            <h1 className={styles.offerTitle}>{offer.title}</h1>
             <ul className={styles.offerList}>
               {offer.offersList.map((offerItem, index) => (
                 <li key={index} className={styles.offerItem}>{offerItem.text}</li>
               ))}
             </ul>
+            <p className={styles.offerDescription}>{offer.description}</p>
+            <div className={styles.priceBlock}>
+              <p className={`${styles.priceOld} ${fuzzyBubbles.className}`}>{offer.priceOld} zł</p>
+              <p className={`${styles.priceNew} ${fuzzyBubbles.className}`}>{offer.priceNew} zł</p>
+            </div>
             <button className={styles.offerButton}>{offer.textButton}</button>
           </div>
           <div className={styles.offerImage}>
