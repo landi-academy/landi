@@ -21,9 +21,9 @@ export const RichText = {
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="ml-10 py-5 space-y-5">
+      <ul className="ml-5 py-5 space-y-2">
         {React.Children.map(children, (child, index) => (
-          <li className="flex items-start list-disc" key={index}>
+          <li className="flex items-start list-disc marker:text-[#ff66c4]" key={index}>
             {child}
           </li>
         ))}
@@ -35,21 +35,21 @@ export const RichText = {
   ),
   block: {
     h1: ({ children }: any) => (
-      <h1 className="text-4xl mt-10 mb-2 font-bold">{children}</h1>
+      <h1 className="text-4xl md:text-[50px] mt-10 mb-2 font-bold text-[#ff66c4]">{children}</h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-3xl mt-10 mb-2 font-bold text-[#25064D]">
+      <h2 className="text-3xl md:text-[40px] mt-10 mb-2 font-bold text-[#ff66c4]">
         {children}
       </h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="text-2xl mt-10 mb-2 font-bold">{children}</h3>
+      <h3 className="text-2xl md:text-[30px] mt-10 mb-2 font-bold text-[#ff66c4]">{children}</h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="text-2xl mt-10 mb-2 font-bold">{children}</h4>
+      <h4 className="text-2xl md:text-[26px] mt-10 mb-2 font-bold text-[#ff66c4]">{children}</h4>
     ),
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-[#25064D] border-l-4 pl-5 py-5 my-5">
+      <blockquote className="border-l-[#ff66c4] border-l-4 pl-5 py-5 my-5">
         {children}
       </blockquote>
     ),

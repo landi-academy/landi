@@ -43,6 +43,28 @@ export const getAboutSectionQuery = groq`*[_type == "aboutSection"][0] {
   shortText,
 }`;
 
+export const getLearningSectionQuery = groq`*[_type == "learningSection"][0] {
+  _id,
+  title,
+  description,
+  "theoryList": theoryList[]{
+    _key,
+    label,
+    "subMenu": subMenu[]{
+      _key,
+      subLabel,
+    },
+  },
+  "practiceList": practiceList[]{
+    _key,
+    label,
+    "subMenu": subMenu[]{
+      _key,
+      subLabel,
+    },
+  },
+}`;
+
 export const getWhySectionQuery = groq`*[_type == "whySection"][0] {
   _id,
   title,

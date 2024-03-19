@@ -25,7 +25,7 @@ const Reason = () => {
   return (
     <section id="reason" className={styles.reason}>
       <div className="container">
-        <h2 className={styles.title}>{reason.title}</h2>
+        {/* <h2 className={styles.title}>{reason.title}</h2> */}
         <div className={styles.reasonWrapper}>
           <div className={styles.reasonContent}>
             <div className={styles.reasonFlex}>

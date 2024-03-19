@@ -34,6 +34,16 @@ export const getAboutSection = async () => {
   return result;
 }
 
+export const getLearningSection = async () => {
+  const result = await sanityClient.fetch(
+    queries.getLearningSectionQuery,
+    {},
+    { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
 export const getWhySection = async () => {
   const result = await sanityClient.fetch(
     queries.getWhySectionQuery,
