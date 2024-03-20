@@ -34,7 +34,5 @@ export type OfferSection = {
   bulletsList: BulletsList;
   name: string;
   profession: string;
-  priceOld: string;
-  priceNew: string;
   textButton: string;
 };

@@ -1,4 +1,5 @@
 'use client';
+import { Caveat } from "next/font/google";
 import { getWhySection } from "@/libs/apis"
 import { WhySection } from "@/types/whySection"
 import Image from "next/image"
@@ -7,6 +8,8 @@ import { RichText } from "../RichText/RichText";
 import { PortableText } from '@portabletext/react'
 import { useEffect, useState } from 'react';
 import { urlFor } from "@/libs/sanity";
+
+const caveat = Caveat({ weight: ['400', '700'], subsets: ["latin"] });
 
 const Reason = () => {
 
@@ -44,8 +47,12 @@ const Reason = () => {
                   className={styles.img}
                 />
               </div>
+              <div className={styles.priceBlock}>
+                <p className={`${styles.priceOld} ${caveat.className}`}>{reason.priceOld} zł</p>
+                <p className={`${styles.priceNew} ${caveat.className}`}>{reason.priceNew} zł</p>
+              </div>
               <div className={styles.buttonBlock}>
-                <button className={styles.reasonBtn}>Click right now</button>
+                <button className={styles.reasonBtn}>Zarejestruj się</button>
               </div>
             </div>
             <div className={styles.reasonFlex}>

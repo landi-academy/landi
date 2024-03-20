@@ -11,4 +11,6 @@ export type WhySection = {
   bodyLeft: any;
   image: Image;
   bodyRight: any;
+  priceOld: string;
+  priceNew: string;
 };

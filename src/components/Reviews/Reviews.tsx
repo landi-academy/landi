@@ -22,7 +22,7 @@ const Reviews = () => {
   return (
     <section id='reviews' className={styles.reviews}>
       {/* <div className="container"> */}
-        <h2 className={styles.title}>Opinie</h2>
+        <h2 className={styles.title}>Dostawaj takie opinie</h2>
         <div className={styles.reviewsWrapper}>
           <ImageSlider images={reviews.images} />
         </div>

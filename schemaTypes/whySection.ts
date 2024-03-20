@@ -25,6 +25,16 @@ const whySection = {
       type: 'blockContent',
       description: 'The right side of the body',
     },
+    {
+      name: 'priceOld',
+      title: 'Price Old',
+      type: 'string',
+    },
+    {
+      name: 'priceNew',
+      title: 'Price New',
+      type: 'string',
+    },
   ],
 };
 

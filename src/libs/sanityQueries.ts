@@ -25,8 +25,6 @@ export const getOfferSectionQuery = groq`*[_type == "offerSection"][0] {
   },
   name,
   profession,
-  priceOld,
-  priceNew,
   textButton,
 }`;
 
@@ -74,6 +72,8 @@ export const getWhySectionQuery = groq`*[_type == "whySection"][0] {
   bodyLeft,
   image,
   bodyRight,
+  priceOld,
+  priceNew,
 }`;
 
 export const getReviewsPicturesQuery = groq`*[_type == "reviewsPictures"][0] {

@@ -78,18 +78,6 @@ const offerSection = {
       validation: (Rule: Rule) => Rule.required()
     },
     {
-      name: 'priceOld',
-      title: 'Price Old',
-      type: 'string',
-      validation: (Rule: Rule) => Rule.required()
-    },
-    {
-      name: 'priceNew',
-      title: 'Price New',
-      type: 'string',
-      validation: (Rule: Rule) => Rule.required()
-    },
-    {
       name: 'textButton',
       title: 'Text Button',
       type: 'string',
