@@ -1,3 +1,10 @@
+type Image = {
+  _key: string;
+  _ref: string;
+  _type: string;
+  url: string;
+};
+
 type SubMenuItem = {
   _key?: string;
   subLabel: string;
@@ -16,4 +23,8 @@ export type LearningSection = {
   description: string;
   theoryList: MenuItem[];
   practiceList: MenuItem[];
+  imageTheory: Image;
+  imagePractice: Image;
+  images: Image[];
+  imageCertificate: Image;
 }

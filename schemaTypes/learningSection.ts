@@ -15,6 +15,11 @@ export default {
       type: 'text',
     },
     {
+      name: 'imageTheory',
+      title: 'Изображение для теории',
+      type: 'image',
+    },
+    {
       name: 'theoryList',
       title: 'Теория',
       type: 'array',
@@ -47,6 +52,11 @@ export default {
           ],
         },
       ],
+    },
+    {
+      name: 'imagePractice',
+      title: 'Изображение для практики',
+      type: 'image',
     },
     {
       name: 'practiceList',
@@ -82,5 +92,20 @@ export default {
         },
       ],
     },
+    {
+      name: 'images',
+      title: 'Изображения',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+        },
+      ],
+    },
+    {
+      name: 'imageCertificate',
+      title: 'Изображение для сертификата',
+      type: 'image',
+    }
   ],
 };

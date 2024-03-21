@@ -146,14 +146,24 @@
   width: 290px; // Устанавливаем ширину SVG
   height: 550px; // Автоматическая высота для сохранения пропорций
   max-width: 220px; // Максимальная ширина, чтобы избежать слишком большого растягивания
-  z-index: 1; // Убедитесь, что дуга не перекрывает интерактивные элементы
-  transform: rotate(10deg);
 
   @media screen and (max-width: 920px) {
     bottom: -40px;
     right: 220px;
     width: 220px;
-    transform: rotate(0deg);
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 480px) {
+    right: 170px;
+  }
+
+  @media screen and (max-width: 410px) {
+    right: 120px;
+  }
+
+  @media screen and (max-width: 360px) {
+    right: 100px;
   }
 }
 

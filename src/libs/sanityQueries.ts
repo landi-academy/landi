@@ -48,6 +48,7 @@ export const getLearningSectionQuery = groq`*[_type == "learningSection"][0] {
   _id,
   title,
   description,
+  imageTheory,
   "theoryList": theoryList[]{
     _key,
     label,
@@ -56,6 +57,7 @@ export const getLearningSectionQuery = groq`*[_type == "learningSection"][0] {
       subLabel,
     },
   },
+  imagePractice,
   "practiceList": practiceList[]{
     _key,
     label,
@@ -64,6 +66,8 @@ export const getLearningSectionQuery = groq`*[_type == "learningSection"][0] {
       subLabel,
     },
   },
+  images,
+  imageCertificate
 }`;
 
 export const getWhySectionQuery = groq`*[_type == "whySection"][0] {
