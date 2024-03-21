@@ -56,11 +56,11 @@ const Learning = async () => {
             <div className={styles.subBlocks}>
               <div className={styles.subBlock}>
                 <h3 className={styles.subBlockTitle}>1</h3>
-                <p className={styles.subBlockText}>Book</p>
+                <p className={styles.subBlockText}>Blok</p>
               </div>
               <div className={styles.subBlock}>
-                <h3 className={styles.subBlockTitle}>4</h3>
-                <p className={styles.subBlockText}>Hours</p>
+                <h3 className={styles.subBlockTitle}>E-Book</h3>
+                {/* <p className={styles.subBlockText}>Hours</p> */}
               </div>
             </div>
           </div>
