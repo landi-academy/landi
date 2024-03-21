@@ -1,5 +1,6 @@
 .learning {
-  margin-bottom: 50px;
+    padding-top: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
+    padding-bottom: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
 }
 
 // .learningWrapper {
@@ -11,13 +12,14 @@
 //   border: 2px solid #ff66c4;
 // }
 
-// .learningTitle {
-//   font-size: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
-//   font-weight: 600;
-//   line-height: 1.2;
-//   margin-bottom: 40px;
-//   color: #23272c;
-// }
+.learningMainTitle {
+  font-size: clamp(2.875rem, 2.557rem + 1.59vw, 3.75rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #23272c;
+  text-align: center;
+}
 
 .learningDescription {
   font-size: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
@@ -56,11 +58,18 @@
 }
 
 .learningText {
-  padding: 50px;
+  padding-left: 20px;
+
+  @media (min-width: 980px) {
+    padding-left: 50px;
+    position: relative;
+    top: 30%;
+    transform: translateY(-30%);
+  }
 }
 
 .learningTitle {
-  font-size: clamp(2.875rem, 2.557rem + 1.59vw, 3.75rem);
+  font-size: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
   font-weight: 600;
   margin-bottom: 20px;
   color: #010101;

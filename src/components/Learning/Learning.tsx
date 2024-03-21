@@ -31,6 +31,10 @@ const Learning = async () => {
           </div>
         </div>
       </div> */}
+      <div className="container">
+        <h2 className={styles.learningMainTitle}>{learning.title}</h2>
+        <p className={styles.learningDescription}>{learning.description}</p>
+      </div>
       <div className={styles.learningWrapper}>
         <div className={styles.learningBlock}>
           <div className={styles.learningContent}>
