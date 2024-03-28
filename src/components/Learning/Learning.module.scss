@@ -3,15 +3,6 @@
     padding-bottom: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
 }
 
-// .learningWrapper {
-//   padding-top: clamp(3.125rem, 1.989rem + 5.68vw, 6.25rem);
-//   padding-bottom: clamp(3.125rem, 1.989rem + 5.68vw, 6.25rem);
-//   padding-inline: clamp(1.563rem, 0.994rem + 2.84vw, 3.125rem); 
-//   background-color: #f8f9fa;
-//   border-radius: 30px;
-//   border: 2px solid #ff66c4;
-// }
-
 .learningMainTitle {
   font-size: clamp(2.875rem, 2.557rem + 1.59vw, 3.75rem);
   font-weight: 600;
@@ -194,5 +185,18 @@
   font-size: clamp(1.125rem, 0.989rem + 0.68vw, 1.5rem);
   line-height: 1.5;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.gallery {
+  margin-top: 40px;
+  margin-bottom: 60px;
+}
+
+.galleryTitle {
+  font-size: clamp(2rem, 1.818rem + 0.91vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #010101;
   text-align: center;
 }

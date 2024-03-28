@@ -5,6 +5,7 @@ import styles from './Learning.module.scss';
 import AccordionBlock from "../AccordionBlock/AccordionBlock";
 import Image from "next/image";
 import { urlFor } from "@/libs/sanity";
+import Carousel from "../Carousel/Carousel";
 
 const Learning = async () => {
 
@@ -16,21 +17,8 @@ const Learning = async () => {
     { header: 'Część praktyczna', items: learning?.practiceList ?? [] },
   ];
 
-  // console.log("image theory", learning.imageTheory);
-
   return (
     <section className={styles.learning}>
-      {/* <div className="container">
-        <div className={styles.learningWrapper}>
-          <div className={styles.learningContent}>
-            <h2 className={styles.learningTitle}>{learning.title}</h2>
-            <p className={styles.learningDescription}>{learning.description}</p>
-            <div className={styles.accordionWrapper}>
-              <AccordionBlock sections={sections} />
-            </div>
-          </div>
-        </div>
-      </div> */}
       <div className="container">
         <h2 className={styles.learningMainTitle}>{learning.title}</h2>
         <p className={styles.learningDescription}>{learning.description}</p>
@@ -52,16 +40,6 @@ const Learning = async () => {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className={styles.subBlocks}>
-              <div className={styles.subBlock}>
-                <h3 className={styles.subBlockTitle}>1</h3>
-                <p className={styles.subBlockText}>Blok</p>
-              </div>
-              <div className={styles.subBlock}>
-                <h3 className={styles.subBlockTitle}>E-Book</h3>
-                {/* <p className={styles.subBlockText}>Hours</p> */}
-              </div>
             </div>
           </div>
           <div className={styles.learningImage}>
@@ -98,18 +76,21 @@ const Learning = async () => {
                 ))}
               </ul>
             </div>
-            <div className={styles.subBlocks}>
-              <div className={styles.subBlock}>
-                <h3 className={styles.subBlockTitle}>2</h3>
-                <p className={styles.subBlockText}>Blocks</p>
-              </div>
-              <div className={styles.subBlock}>
-                <h3 className={styles.subBlockTitle}>1</h3>
-                <p className={styles.subBlockText}>Day</p>
-              </div>
-            </div>
           </div>
         </div>
+      </div>
+      <div className={styles.gallery}>
+        <h2 className={styles.galleryTitle}>Nauczysz się to robić</h2>
+        <Carousel images={learning.images} />
+      </div>
+      <div className={styles.certificate}>
+        <h2 className={styles.certificateTitle}>Certyfikat</h2>
+        <Image
+          src={urlFor(learning.imageCertificate).url()}
+          alt="Certyfikat"
+          width={1000}
+          height={1000}
+        />
       </div>
     </section>
   )

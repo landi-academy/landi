@@ -47,10 +47,10 @@ const Reason = () => {
                   className={styles.img}
                 />
               </div>
-              <div className={styles.priceBlock}>
+              {/* <div className={styles.priceBlock}>
                 <p className={`${styles.priceOld} ${caveat.className}`}>{reason.priceOld} zł</p>
                 <p className={`${styles.priceNew} ${caveat.className}`}>{reason.priceNew} zł</p>
-              </div>
+              </div> */}
               <div className={styles.buttonBlock}>
                 <button className={styles.reasonBtn}>Zarejestruj się</button>
               </div>
