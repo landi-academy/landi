@@ -23,8 +23,8 @@ const Carousel: React.FC<Props> = ({ images }) => {
         className={styles.slider}
       >
         {images.map((image) => (
-          <Slider.Slide>
-            <div key={image._key} className={styles.gridItem}>
+          <Slider.Slide key={image._key}>
+            <div className={styles.gridItem}>
               <Image
                 className={styles.image}
                 src={urlFor(image).url()}
