@@ -12,7 +12,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: clamp(1.25rem, 0.682rem + 2.84vw, 2.813rem);
+  gap: 50px;
 
   @media (max-width: 768px) {
     flex-direction: column;

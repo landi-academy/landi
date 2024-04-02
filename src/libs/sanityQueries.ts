@@ -101,6 +101,13 @@ export const getContactQuery = groq`*[_type == "contact"][0] {
   _id,
   contactTitle,
   contactDescription,
+  "contactBulletList": contactBulletList[]{
+    _key,
+    label,
+  },
+  shortText,
+  priceOld,
+  priceNew,
   contactImage,
 }`;
 
