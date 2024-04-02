@@ -3,6 +3,7 @@
 import { FC, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 import { sendEmail } from '@/utils/send-email';
 
 import styles from './ContactForm.module.scss';
@@ -29,11 +30,17 @@ const ContactForm: FC = () => {
     email: Yup.string().email('Nieprawidłowy adres email').required('Email jest wymagany'),
   });
 
-    const onSubmit = async (values: FormData, { setSubmitting, resetForm }: FormikHelpers<FormData>) => {
+  const onSubmit = async (values: FormData, { setSubmitting, resetForm }: FormikHelpers<FormData>) => {
+    setSubmitting(true);
     try {
-      await sendEmail(values);
-      setMessage('Otrzymałem Twoją wiadomość i wkrótce się z Tobą skontaktuję. Poczekaj chwilę :)');
-      resetForm();
+      // Используем axios для отправки данных на API-роут
+      const response = await axios.post('/api/email', values);
+      if (response.data.message === 'Email sent') {
+        setMessage('Otrzymałem Twoją wiadomość i wkrótce się z Tobą skontaktuję. Poczekaj chwilę :)');
+      } else {
+        throw new Error('Server responded with an error');
+      }
+      resetForm({});
     } catch (error) {
       setMessage('Wystąpił błąd podczas wysyłania formularza');
     } finally {
