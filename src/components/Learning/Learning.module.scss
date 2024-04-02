@@ -8,7 +8,7 @@
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 40px;
-  color: #23272c;
+  color: #ff66c4;
   text-align: center;
 }
 
@@ -82,6 +82,7 @@
   width: 100%;
   margin: 0 auto;
   background-color: #fff;
+  overflow: hidden;
 
   // img {
   //   width: 100%;
@@ -113,6 +114,13 @@
   aspect-ratio: 16/9;
   object-fit: cover;
   object-position: center;
+  transition: all 0.3s ease-in-out;
+
+  @media (min-width: 980px) {
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .itemLabel {

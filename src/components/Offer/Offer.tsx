@@ -28,7 +28,7 @@ const Offer = async () => {
                 <li key={index} className={styles.offerItem}>{offerItem.text}</li>
               ))}
             </ul>
-            <p className={styles.offerDescription}>{offer.description}</p>
+            {/* <p className={styles.offerDescription}>{offer.description}</p> */}
             <button className={styles.offerButton}>{offer.textButton}</button>
           </div>
           <div className={styles.offerImage}>
