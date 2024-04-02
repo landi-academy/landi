@@ -63,6 +63,18 @@
   font-size: 0.75rem;
 }
 
+// -webkit-text-fill-color устанавливает цвет текста. Замените #fff на желаемый цвет текста.
+// -webkit-box-shadow используется для изменения фона поля. #363a3e — это цвет фона; замените его на цвет, который вы используете для полей ввода. Важно, что использование box-shadow вместо background-color позволяет обойти ограничения браузера на прямое изменение фона автозаполненных полей.
+// transition: background-color 5000s — это трюк, который замедляет любые попытки браузера изменить фон после автозаполнения, практически предотвращая его изменение.
+.inputField:-webkit-autofill,
+.inputField:-webkit-autofill:hover, 
+.inputField:-webkit-autofill:focus, 
+.inputField:-webkit-autofill:active  {
+    -webkit-text-fill-color: #fff !important; /* Цвет текста */
+    -webkit-box-shadow: 0 0 0px 1000px #363a3e inset; /* Фон поля, замените на желаемый цвет */
+    transition: background-color 5000s ease-in-out 0s; /* Задержка изменения фона, чтобы предотвратить мерцание */
+}
+
 .error {
   position: absolute;
   z-index: 1;
@@ -86,4 +98,47 @@
   filter: drop-shadow(-3px -6px 12px #000000);
   border-radius: 5px;
   z-index: 1000;
+}
+
+.customCheckbox {
+  display: flex;
+  padding-inline: 10px;
+  margin-bottom: 5px;
+}
+
+.customCheckbox input[type="checkbox"] {
+  display: none;
+}
+
+.customCheckbox label {
+  position: relative;
+  padding-left: 30px; /* Отступ для визуального индикатора */
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.customCheckbox label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc; /* Граница неотмеченного чекбокса */
+  border-radius: 4px; /* Скругление углов для круглого чекбокса можно убрать */
+  background-color: white; /* Фон неотмеченного чекбокса */
+}
+
+.customCheckbox input[type="checkbox"]:checked + label::before {
+  background-color: #ff66c4; /* Цвет фона при активации */
+  border-color: #ff66c4; /* Цвет границы при активации */
+}
+
+.customCheckbox input[type="checkbox"]:checked + label::after {
+  content: '✔';
+  position: absolute;
+  left: 4px;
+  top: -3px;
+  color: white; /* Цвет галочки */
+  font-size: 18px;
 }
