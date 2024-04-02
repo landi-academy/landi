@@ -1,7 +1,8 @@
 'use client';
 
-import { FC, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { FC } from 'react';
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
+import * as Yup from 'yup';
 import { sendEmail } from '@/utils/send-email';
 
 import styles from './ContactForm.module.scss';
@@ -13,68 +14,49 @@ export type FormData = {
 };
 
 const ContactForm: FC = () => {
-  const { register, handleSubmit } = useForm<FormData>();
-  const [nameFilled, setNameFilled] = useState(false);
-  const [phoneFilled, setPhoneFilled] = useState(false);
-  const [emailFilled, setEmailFilled] = useState(false);
+  const initialValues: FormData = {
+    name: '',
+    phone: '',
+    email: '',
+  };
 
-  function onSubmit(data: FormData) {
-    sendEmail(data);
-  }
+  const validationSchema = Yup.object({
+    name: Yup.string().required('Imię jest wymagane'),
+    phone: Yup.string().required('Telefon jest wymagany'),
+    email: Yup.string().email('Nieprawidłowy adres email').required('Email jest wymagany'),
+  });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>, setState: React.Dispatch<React.SetStateAction<boolean>>) => {
-    const value = event.target.value;
-    if (value.trim() !== '') {
-      setState(true);
-    } else {
-      setState(false);
-    }
+  // Уточняем типы для параметров функции onSubmit
+  const onSubmit = (values: FormData, { setSubmitting }: FormikHelpers<FormData>) => {
+    sendEmail(values);
+    setSubmitting(false);
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.inputWrapper}>
-        <label htmlFor='name' className={`${styles.label} ${nameFilled ? styles.filled : ''}`}>
-          Imię
-        </label>
-        <input
-          id='name'
-          type='text'
-          className={`${styles.inputField} w-full rounded-md`}
-          {...register('name', { required: true })}
-          onChange={(e) => handleInputChange(e, setNameFilled)}
-        />
-      </div>
-      <div className={styles.inputWrapper}>
-        <label htmlFor='phone' className={`${styles.label} ${phoneFilled ? styles.filled : ''}`}>
-          Telefon
-        </label>
-        <input
-          id='phone'
-          type='phone'
-          className={`${styles.inputField} w-full rounded-md`}
-          {...register('phone', { required: true })}
-          onChange={(e) => handleInputChange(e, setPhoneFilled)}
-        />
-      </div>
-      <div className={styles.inputWrapper}>
-        <label htmlFor='email' className={`${styles.label} ${emailFilled ? styles.filled : ''}`}>
-          E-mail
-        </label>
-        <input
-          id='email'
-          type='email'
-          className={`${styles.inputField} w-full rounded-md`}
-          {...register('email', { required: true })}
-          onChange={(e) => handleInputChange(e, setEmailFilled)}
-        />
-      </div>
-      <div>
-        <button className={styles.sentBtn}>
-          Wyślij wiadomość
-        </button>
-      </div>
-    </form>
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+      {({ isSubmitting }) => (
+        <Form>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='name' className={styles.label}>Imię</label>
+            <Field id='name' name='name' type='text' className={`${styles.inputField} w-full rounded-md`} />
+            <ErrorMessage name='name' component='div' className={styles.error} />
+          </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='phone' className={styles.label}>Telefon</label>
+            <Field id='phone' name='phone' type='tel' className={`${styles.inputField} w-full rounded-md`} />
+            <ErrorMessage name='phone' component='div' className={styles.error} />
+          </div>
+          <div className={styles.inputWrapper}>
+            <label htmlFor='email' className={styles.label}>E-mail</label>
+            <Field id='email' name='email' type='email' className={`${styles.inputField} w-full rounded-md`} />
+            <ErrorMessage name='email' component='div' className={styles.error} />
+          </div>
+          <div>
+            <button type='submit' className={styles.sentBtn} disabled={isSubmitting}>Wyślij wiadomość</button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 };
 
