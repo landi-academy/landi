@@ -12,7 +12,7 @@ const Learning = async () => {
   const learning: LearningSection = await getLearningSection();
 
   return (
-    <section className={styles.learning}>
+    <section id="learning" className={styles.learning}>
       <div className="container">
         <h2 className={styles.learningMainTitle}>{learning.title}</h2>
         <p className={styles.learningDescription}>{learning.description}</p>
