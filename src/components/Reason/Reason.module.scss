@@ -28,6 +28,12 @@
 
 .reasonFlex {
   flex: 1;
+
+  &:nth-child(2) {
+    @media screen and (max-width: 768px) {
+      order: 3;
+    }
+  }
 }
 
 .imageBlock {
@@ -35,7 +41,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
 .img {

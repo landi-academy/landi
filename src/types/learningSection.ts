@@ -23,8 +23,9 @@ export type LearningSection = {
   description: string;
   theoryList: MenuItem[];
   practiceList: MenuItem[];
+  certificateList: MenuItem[];
   imageTheory: Image;
   imagePractice: Image;
-  images: Image[];
   imageCertificate: Image;
+  images: Image[];
 }

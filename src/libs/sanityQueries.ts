@@ -66,8 +66,16 @@ export const getLearningSectionQuery = groq`*[_type == "learningSection"][0] {
       subLabel,
     },
   },
+  imageCertificate,
+  "certificateList": certificateList[]{
+    _key,
+    label,
+    "subMenu": subMenu[]{
+      _key,
+      subLabel,
+    },
+  },
   images,
-  imageCertificate
 }`;
 
 export const getWhySectionQuery = groq`*[_type == "whySection"][0] {

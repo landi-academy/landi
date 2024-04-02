@@ -38,7 +38,7 @@ export const RichText = {
       <h1 className="text-4xl md:text-[50px] mt-10 mb-2 font-bold text-[#ff66c4]">{children}</h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-3xl md:text-[40px] mt-10 mb-2 font-bold text-[#ff66c4]">
+      <h2 className="text-center md:text-left text-3xl md:text-[40px] mt-10 mb-2 font-bold text-[#ff66c4]">
         {children}
       </h2>
     ),

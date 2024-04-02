@@ -93,6 +93,45 @@ export default {
       ],
     },
     {
+      name: 'imageCertificate',
+      title: 'Изображение для сертификата',
+      type: 'image',
+    },
+    {
+      name: 'certificateList',
+      title: 'Текст о сертификате',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'label',
+              title: 'Название пункта меню',
+              type: 'string',
+            },
+            {
+              name: 'subMenu',
+              title: 'Пункты подменю',
+              type: 'array',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'subLabel',
+                      title: 'Название пункта подменю',
+                      type: 'string',
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       name: 'images',
       title: 'Изображения',
       type: 'array',
@@ -102,10 +141,5 @@ export default {
         },
       ],
     },
-    {
-      name: 'imageCertificate',
-      title: 'Изображение для сертификата',
-      type: 'image',
-    }
   ],
 };

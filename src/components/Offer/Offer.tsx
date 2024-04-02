@@ -15,8 +15,6 @@ const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["
 const Offer = async () => {
 
   const offer: OfferSection = await getOfferSection();
-  
-  // console.log("offer", offer.bulletsList);
 
   return (
     <section id='offer' className={styles.offer}>

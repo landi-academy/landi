@@ -11,12 +11,6 @@ const Learning = async () => {
 
   const learning: LearningSection = await getLearningSection();
 
-  // Структурируем данные для AccordionBlock
-  const sections = [
-    { header: 'Część teoretyczna', items: learning?.theoryList ?? [] },
-    { header: 'Część praktyczna', items: learning?.practiceList ?? [] },
-  ];
-
   return (
     <section className={styles.learning}>
       <div className="container">
@@ -48,6 +42,7 @@ const Learning = async () => {
               alt="Teoria"
               width={1000}
               height={1000}
+              className={styles.picture}
             />
           </div>
         </div>
@@ -58,6 +53,7 @@ const Learning = async () => {
               alt="Praktyka"
               width={1000}
               height={1000}
+              className={styles.picture}
             />
           </div>
           <div className={styles.learningContent}>
@@ -78,19 +74,47 @@ const Learning = async () => {
             </div>
           </div>
         </div>
+        <div className={styles.learningBlock}>
+          <div className={styles.learningContent}>
+            <div className={styles.learningText}>
+              <h3 className={styles.learningTitle}>Dostaniesz</h3>
+              <ul>
+                {learning?.certificateList.map((item) => (
+                  <li className={styles.itemLabel} key={item._key}>
+                    {item.label}
+                    <ul className={styles.subItems}>
+                      {item.subMenu?.map((sub) => (
+                        <li className={styles.subLabel} key={sub._key}>{sub.subLabel}</li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className={styles.learningImage}>
+            <Image
+              src={urlFor(learning.imageCertificate).url()}
+              alt="Serfitikat"
+              width={1000}
+              height={1000}
+              className={styles.picture}
+            />
+          </div>
+          <div className={styles.certificateImage}>
+            <Image
+              src={urlFor(learning.imageCertificate).url()}
+              alt="Serfitikat"
+              width={1000}
+              height={1000}
+              className={styles.picture}
+            />
+          </div>
+        </div>
       </div>
       <div className={styles.gallery}>
-        <h2 className={styles.galleryTitle}>Nauczysz się to robić</h2>
+        <h2 className={styles.galleryTitle}>Pokażę Ci jak osiągnąć takie efekty</h2>
         <Carousel images={learning.images} />
-      </div>
-      <div className={styles.certificate}>
-        <h2 className={styles.certificateTitle}>Certyfikat</h2>
-        <Image
-          src={urlFor(learning.imageCertificate).url()}
-          alt="Certyfikat"
-          width={1000}
-          height={1000}
-        />
       </div>
     </section>
   )
