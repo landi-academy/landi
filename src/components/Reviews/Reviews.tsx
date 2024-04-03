@@ -20,16 +20,15 @@ const Reviews = () => {
   }, []);
 
   useEffect(() => {
-    // Проверяем, было ли модальное окно уже показано в текущей сессии
-    const isModalShown = sessionStorage.getItem('isModalShown');
+    // Убедимся, что модальное окно еще не показывалось в этой сессии
+    const isModalShown = sessionStorage.getItem('isModalShown') === 'true';
     
     if (reviews && !isModalShown) {
       const observer = new IntersectionObserver(
         (entries) => {
-          if (entries[0].isIntersecting) {
+          if (entries[0].isIntersecting && !sessionStorage.getItem('isModalShown')) {
             setShowPopup(true);
-            // Устанавливаем флаг, что модальное окно показано
-            sessionStorage.setItem('isModalShown', 'true');
+            sessionStorage.setItem('isModalShown', 'true'); // Помечаем, что модальное окно было показано
           }
         },
         { threshold: 0.3 }
@@ -39,13 +38,9 @@ const Reviews = () => {
         observer.observe(reviewsRef.current);
       }
 
-      return () => {
-        if (reviewsRef.current) {
-          observer.unobserve(reviewsRef.current);
-        }
-      };
+      return () => observer.disconnect(); // Используем disconnect для чистки
     }
-  }, [reviews]);
+  }, [reviews]); // Зависимость от reviews гарантирует, что этот эффект проверит условие после загрузки отзывов
 
   if (!reviews) return <div>Loading...</div>;
 
@@ -61,7 +56,6 @@ const Reviews = () => {
         <ModalOnScroll
           isOpen={showPopup}
           onClose={() => setShowPopup(false)}
-          onFormSubmitSuccess={() => setShowPopup(false)}
         />
       )}
     </>
