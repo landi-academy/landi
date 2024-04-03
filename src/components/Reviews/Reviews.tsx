@@ -20,11 +20,16 @@ const Reviews = () => {
   }, []);
 
   useEffect(() => {
-    if (reviews) {
+    // Проверяем, было ли модальное окно уже показано в текущей сессии
+    const isModalShown = sessionStorage.getItem('isModalShown');
+    
+    if (reviews && !isModalShown) {
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
             setShowPopup(true);
+            // Устанавливаем флаг, что модальное окно показано
+            sessionStorage.setItem('isModalShown', 'true');
           }
         },
         { threshold: 0.3 }
@@ -42,10 +47,6 @@ const Reviews = () => {
     }
   }, [reviews]);
 
-  useEffect(() => {
-    console.log("showPopup state changed:", showPopup); // Добавьте это для отладки
-  }, [showPopup]);
-
   if (!reviews) return <div>Loading...</div>;
 
   return (
@@ -60,7 +61,7 @@ const Reviews = () => {
         <ModalOnScroll
           isOpen={showPopup}
           onClose={() => setShowPopup(false)}
-          onFormSubmitSuccess={() => setShowPopup(false)} // Передача функции onClose как onFormSubmitSuccess
+          onFormSubmitSuccess={() => setShowPopup(false)}
         />
       )}
     </>
