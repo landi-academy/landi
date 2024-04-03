@@ -5,9 +5,10 @@ import styles from './ModalOnScroll.module.scss';
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onFormSubmitSuccess?: () => void;
 }
 
-const ModalOnScroll = ({ isOpen, onClose }: ModalProps) => {
+const ModalOnScroll = ({ isOpen, onClose, onFormSubmitSuccess }: ModalProps) => {
   return (
     <div className={styles.overlay}>
       <div
@@ -24,7 +25,7 @@ const ModalOnScroll = ({ isOpen, onClose }: ModalProps) => {
         >
           <h2 className={styles.title}>Zostaw swoje dane kontaktowe</h2>
           <p className={styles.description}>Oddzwonimy do Ciebie w ciągu 24 godzin</p>
-          <ContactForm />
+          <ContactForm onFormSubmitSuccess={onFormSubmitSuccess} />
         </div>
       </div>
     </div>

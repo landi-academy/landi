@@ -14,7 +14,11 @@ export type FormData = {
   agreedToPolicy: boolean;
 };
 
-const ContactForm: FC = () => {
+export interface ContactFormProps {
+  onFormSubmitSuccess?: () => void; // Функция обратного вызова для успешной отправки
+}
+
+const ContactForm: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
   const [message, setMessage] = useState<string | null>(null);
   const [filled, setFilled] = useState({ name: false, phone: false, email: false });
 

@@ -1,4 +1,3 @@
-// Reviews.tsx
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { getReviewsPictures } from "@/libs/apis";
@@ -41,20 +40,24 @@ const Reviews = () => {
         }
       };
     }
-  }, [reviews]); // Зависимость от reviews
+  }, [reviews]);
 
   if (!reviews) return <div>Loading...</div>;
 
   return (
     <>
       <section ref={reviewsRef} id='reviews' className={styles.reviews}>
-          <h2 className={styles.title}>Dostawaj takie opinie</h2>
-          <div className={styles.reviewsWrapper}>
-            <ImageSlider images={reviews.images} />
-          </div>
+        <h2 className={styles.title}>Dostawaj takie opinie</h2>
+        <div className={styles.reviewsWrapper}>
+          <ImageSlider images={reviews.images} />
+        </div>
       </section>
       {showPopup && (
-        <ModalOnScroll isOpen={showPopup} onClose={() => setShowPopup(false)} />
+        <ModalOnScroll
+          isOpen={showPopup}
+          onClose={() => setShowPopup(false)}
+          onFormSubmitSuccess={() => setShowPopup(false)} // Передача функции onClose как onFormSubmitSuccess
+        />
       )}
     </>
   );
