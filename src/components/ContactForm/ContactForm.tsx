@@ -64,6 +64,8 @@ const ContactForm: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
         setMessage('Otrzymałem Twoją wiadomość i wkrótce się з Tobą skontaktuję. Poczekaj chwilę :)');
         resetForm({});
         setFilled({ name: false, phone: false, email: false }); // Reset the filled state
+        console.log("Calling onFormSubmitSuccess");
+        onFormSubmitSuccess && onFormSubmitSuccess();
       } else {
         throw new Error('Server responded with an error');
       }

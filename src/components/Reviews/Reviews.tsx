@@ -42,6 +42,10 @@ const Reviews = () => {
     }
   }, [reviews]);
 
+  useEffect(() => {
+    console.log("showPopup state changed:", showPopup); // Добавьте это для отладки
+  }, [showPopup]);
+
   if (!reviews) return <div>Loading...</div>;
 
   return (
