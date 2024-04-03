@@ -1,0 +1,50 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(117, 116, 116, 0.5);
+  z-index: 1000;
+
+}
+
+.modalOnScroll {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #23272c;
+  padding: 40px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  max-width: 600px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.modalOnScrollContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(1.375rem, 1.284rem + 0.45vw, 1.625rem);
+  font-weight: 700;
+  color: #ff66c4;
+}
+
+.description {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  color: #fff;
+}
