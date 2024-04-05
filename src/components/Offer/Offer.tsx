@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { urlFor } from '@/libs/sanity';
 
 import bgImage from '@/images/bg-img.png'
+import ScrollLink from "../ScrollLink/ScrollLink";
 
 
 const caveat = Caveat({ weight: ['400', '700'], subsets: ["latin"] });
@@ -29,7 +30,10 @@ const Offer = async () => {
               ))}
             </ul>
             {/* <p className={styles.offerDescription}>{offer.description}</p> */}
-            <button className={styles.offerButton}>{offer.textButton}</button>
+            {/* <button className={styles.offerButton}>{offer.textButton}</button> */}
+            <ScrollLink href="#contact">
+              <button className={styles.offerButton}>{offer.textButton}</button>
+            </ScrollLink>
           </div>
           <div className={styles.offerImage}>
             <Image

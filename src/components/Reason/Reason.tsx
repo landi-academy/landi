@@ -7,6 +7,7 @@ import { RichText } from "../RichText/RichText";
 import { PortableText } from '@portabletext/react'
 import { useEffect, useState } from 'react';
 import { urlFor } from "@/libs/sanity";
+import ScrollLink from "../ScrollLink/ScrollLink";
 
 const Reason = () => {
 
@@ -45,7 +46,9 @@ const Reason = () => {
                 />
               </div>
               <div className={styles.buttonBlock}>
-                <button className={styles.reasonBtn}>Zarejestruj się</button>
+                <ScrollLink href="#contact">
+                  <button className={styles.reasonBtn}>Kupić</button>
+                </ScrollLink>
               </div>
             </div>
             <div className={styles.reasonFlex}>
