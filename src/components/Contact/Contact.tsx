@@ -5,6 +5,7 @@ import { getContact } from '@/libs/apis';
 import Image from 'next/image';
 import { urlFor } from '@/libs/sanity';
 import ContactForm from '../ContactForm/ContactForm';
+import Link from "next/link";
 
 const caveat = Caveat({ weight: ['400', '700'], subsets: ["latin"] });
 
@@ -19,7 +20,13 @@ const Contact = async () => {
           <div className={`${styles.contactFlex} ${styles.contactContent}`}>
               <h1 className={styles.contactTitle}>{contact.contactTitle}</h1>
               <p className={styles.contactDescription}>{contact.contactDescription}</p>
-              <ContactForm />
+            {/* <ContactForm /> */}
+            <Link
+              href="/"
+              className={styles.buyLink}
+            >
+              Kupuj ze zniżką
+            </Link>
           </div>
           <div className={styles.contactFlex}>
             <ul className={styles.contactBulletList}>
