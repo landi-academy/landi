@@ -5,12 +5,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
 });
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   try {
     const session = await stripe.checkout.sessions.create({
