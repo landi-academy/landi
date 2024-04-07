@@ -82,7 +82,7 @@ const Header = () => {
       document.removeEventListener('mousedown', handleClickOutside);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [navbarData]);
+  }, []);
 
 
   const scrollToSection = (sectionId: string) => {
