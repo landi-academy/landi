@@ -68,3 +68,33 @@ input[type="number"]::-webkit-outer-spin-button {
     }
   }
 }
+
+/* ======== course page ========= */
+.course {
+  margin-top: 75px;
+}
+
+.courseWrapper {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.courseTitle {
+  font-size: clamp(2.25rem, 1.886rem + 1.82vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #ff66c4;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(223, 63, 63, 0.5); /* Тень */
+  -webkit-text-stroke: 1px rgba(223, 63, 63, 0.5); /* Контур */
+}
+.courseDescription {
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  line-height: 1.5;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/*  */

@@ -3,6 +3,7 @@ import {sanityClient} from './sanity';
 import * as queries from './sanityQueries';
 import { Header } from '@/types/header';
 import { OfferSection } from '@/types/offerSection';
+import { Course } from '@/types/course';
 
 export async function getHeader() {
   const result = await sanityClient.fetch<Header>(
@@ -87,6 +88,16 @@ export const getFooter = async () => {
     {},
     // { cache: 'no-cache' }
     {next: { revalidate: 3600 }}
+  );
+
+  return result;
+}
+
+export async function getCourse(slug: string) {
+  const result = await sanityClient.fetch<Course>(
+    queries.getCourseQuery,
+    { slug },
+    { cache: 'no-cache' }
   );
 
   return result;

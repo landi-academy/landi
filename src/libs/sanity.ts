@@ -16,3 +16,18 @@ const builder = ImageUrlBuilder(sanityClient);
 export function urlFor(source: any) {
   return builder.image(source)
 }
+
+export function fileUrl(assetRef: any) {
+  if (!assetRef) return null; // Проверяем, что _ref предоставлен
+
+  // Исправленное регулярное выражение для обработки расширений, содержащих буквы и цифры
+  const match = assetRef.match(/^(file)-([a-f0-9]+)-(\w+)$/);
+  if (!match) return null; // Если формат не совпадает, возвращаем null
+
+  const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
+  const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
+  
+  const assetId = match[2];
+  const extension = match[3];
+  return `https://cdn.sanity.io/files/${projectId}/${dataset}/${assetId}.${extension}`;
+}

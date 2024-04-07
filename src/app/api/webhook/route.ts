@@ -1,34 +1,54 @@
+// api/webhook/stripe.ts
+
 import Stripe from 'stripe';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { sanityClient } from '@/libs/sanity';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: "2023-10-16",
+  apiVersion: '2023-10-16',
 });
 
-export async function POST(req: NextRequest, res: NextResponse) {
-
-  const payload = await req.text();
-  const response = JSON.parse(payload);
-
-  const sig = req.headers.get('Stripe-Signature');
-
-  const dateTime = new Date(response?.creaded * 1000).toLocaleDateString();
-  const timeString = new Date(response?.creaded * 1000).toLocaleDateString();
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const sig = req.headers['stripe-signature'];
+  let event;
 
   try {
-
-    let event = stripe.webhooks.constructEvent(
-      payload,
-      sig!,
-      process.env.STRIPE_WEBHOOK_SECRET!
-    );
-
-    console.log("event", event.type);
-
-    return NextResponse.json({ status: "Success", event: event.type})
-
-  } catch (error) {
-    return NextResponse.json({ status: "Failed", error })
+    const payload = await req.body;
+    event = stripe.webhooks.constructEvent(payload, sig!, process.env.STRIPE_WEBHOOK_SECRET!);
+  } catch (err) {
+    if (err instanceof Error) {
+      return res.status(400).send(`Webhook Error: ${err.message}`);
+    }
+    return res.status(400).send('Webhook Error: Unknown error');
   }
 
+  // Обработка события завершения сессии оплаты
+if (event.type === 'checkout.session.completed') {
+  const session = event.data.object;
+
+  // Генерируем уникальный URL
+  const uniqueURL = `https://landi-academy.pl/kurs/kurs-tajemnice-nanoplastii/session/${session.id}`;
+  console.log('Уникальный URL для доступа к курсу:', uniqueURL);
+
+  // Создаем документ для доступа к курсу в Sanity
+  const courseAccessDoc = {
+    _type: 'courseAccess',
+    courseId: 'prod_PsLvsSwZq534gt', // Укажите ID вашего курса
+    slug: {
+      _type: 'slug',
+      current: `kurs-${session.id}`, // Генерация уникального slug на основе session.id
+    },
+    createdAt: new Date().toISOString(),
+    stripePurchaseId: session.id,
+  };
+
+  // Сохраняем документ в Sanity
+  sanityClient.create(courseAccessDoc)
+    .then(response => {
+      console.log('Course access saved:', response);
+    })
+    .catch(error => console.error('Error saving course access:', error));
+}
+
+  res.json({received: true});
 }

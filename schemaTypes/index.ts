@@ -7,6 +7,8 @@ import contact from "./contact";
 import footer from "./footer";
 import reviewsPictures from "./reviewsPictures";
 import learningSection from "./learningSection";
+import course from "./course";
+import courseAccess from "./courseAccess";
 
 export const schemaTypes = [
   header,
@@ -18,4 +20,6 @@ export const schemaTypes = [
   reviewsPictures,
   contact,
   footer,
+  course,
+  courseAccess,
 ]
