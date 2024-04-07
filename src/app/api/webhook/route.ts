@@ -12,6 +12,10 @@ export async function POST(req: NextRequest) {
 
   try {
     const payload = await req.text(); // Используйте req.text() для получения тела запроса в виде строки
+
+console.log('Payload:', payload);
+console.log('Signature:', sig);
+
     event = stripe.webhooks.constructEvent(payload, sig!, process.env.STRIPE_WEBHOOK_SECRET!);
   } catch (err) {
     if (err instanceof Error) {
