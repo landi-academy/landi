@@ -1,23 +1,23 @@
 import Stripe from 'stripe';
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { sanityClient } from '@/libs/sanity';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
 });
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const sig = req.headers['stripe-signature'];
+export async function POST(req: NextRequest) {
+  const sig = req.headers.get('stripe-signature');
   let event;
 
   try {
-    const payload = await req.body;
+    const payload = await req.text(); // Используйте req.text() для получения тела запроса в виде строки
     event = stripe.webhooks.constructEvent(payload, sig!, process.env.STRIPE_WEBHOOK_SECRET!);
   } catch (err) {
     if (err instanceof Error) {
-      return res.status(400).send(`Webhook Error: ${err.message}`);
+      return new NextResponse(`Webhook Error: ${err.message}`, { status: 400 });
     }
-    return res.status(400).send('Webhook Error: Unknown error');
+    return new NextResponse('Webhook Error: Unknown error', { status: 400 });
   }
 
   // Обработка события завершения сессии оплаты
@@ -41,12 +41,19 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     };
 
     // Сохраняем документ в Sanity
-    sanityClient.create(courseAccessDoc)
-      .then(response => {
-        console.log('Course access saved:', response);
-      })
-      .catch(error => console.error('Error saving course access:', error));
+    try {
+      await sanityClient.create(courseAccessDoc);
+      console.log('Course access saved:', courseAccessDoc);
+    } catch (error) {
+      console.error('Error saving course access:', error);
+      return new NextResponse('Error saving course access', { status: 500 });
+    }
   }
 
-  res.json({received: true});
+  return new NextResponse(JSON.stringify({ received: true }), {
+    status: 200,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 }
