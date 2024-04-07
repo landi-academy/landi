@@ -1,5 +1,3 @@
-// api/webhook/stripe.ts
-
 import Stripe from 'stripe';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { sanityClient } from '@/libs/sanity';
@@ -8,7 +6,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
   const sig = req.headers['stripe-signature'];
   let event;
 
@@ -23,32 +27,32 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Обработка события завершения сессии оплаты
-if (event.type === 'checkout.session.completed') {
-  const session = event.data.object;
+  if (event.type === 'checkout.session.completed') {
+    const session = event.data.object;
 
-  // Генерируем уникальный URL
-  const uniqueURL = `https://landi-academy.pl/kurs/kurs-tajemnice-nanoplastii/session/${session.id}`;
-  console.log('Уникальный URL для доступа к курсу:', uniqueURL);
+    // Генерируем уникальный URL
+    const uniqueURL = `https://landi-academy.pl/kurs/kurs-tajemnice-nanoplastii/session/${session.id}`;
+    console.log('Уникальный URL для доступа к курсу:', uniqueURL);
 
-  // Создаем документ для доступа к курсу в Sanity
-  const courseAccessDoc = {
-    _type: 'courseAccess',
-    courseId: 'prod_PsLvsSwZq534gt', // Укажите ID вашего курса
-    slug: {
-      _type: 'slug',
-      current: `kurs-${session.id}`, // Генерация уникального slug на основе session.id
-    },
-    createdAt: new Date().toISOString(),
-    stripePurchaseId: session.id,
-  };
+    // Создаем документ для доступа к курсу в Sanity
+    const courseAccessDoc = {
+      _type: 'courseAccess',
+      courseId: 'prod_PsLvsSwZq534gt', // Укажите ID вашего курса
+      slug: {
+        _type: 'slug',
+        current: `kurs-${session.id}`, // Генерация уникального slug на основе session.id
+      },
+      createdAt: new Date().toISOString(),
+      stripePurchaseId: session.id,
+    };
 
-  // Сохраняем документ в Sanity
-  sanityClient.create(courseAccessDoc)
-    .then(response => {
-      console.log('Course access saved:', response);
-    })
-    .catch(error => console.error('Error saving course access:', error));
-}
+    // Сохраняем документ в Sanity
+    sanityClient.create(courseAccessDoc)
+      .then(response => {
+        console.log('Course access saved:', response);
+      })
+      .catch(error => console.error('Error saving course access:', error));
+  }
 
   res.json({received: true});
 }
