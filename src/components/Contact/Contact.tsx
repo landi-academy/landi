@@ -22,7 +22,7 @@ const Contact = async () => {
               <p className={styles.contactDescription}>{contact.contactDescription}</p>
             {/* <ContactForm /> */}
             <Link
-              href="https://buy.stripe.com/test_6oEeVrdBu3BZayscMP"
+              href="#"
               className={styles.buyLink}
             >
               Kupuj ze zniżką
