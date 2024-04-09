@@ -1,41 +1,15 @@
 // 'use client';
-import { loadStripe } from '@stripe/stripe-js';
 import { Caveat } from "next/font/google";
 import styles from './Contact.module.scss';
 import { Contact as ContactType } from '@/types/contact';
 import { getContact } from '@/libs/apis';
-
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+import BuyButton from "../BuyButton/BuyButton";
 
 const caveat = Caveat({ weight: ['400', '700'], subsets: ["latin"] });
 
 const Contact = async () => {
 
   const contact: ContactType = await getContact();
-
-    const handleBuyClick = async () => {
-      const stripe = await stripePromise;
-      if (stripe) {
-        const response = await fetch('/api/checkout', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          // Добавьте необходимые данные, если нужно
-        });
-
-        const session = await response.json();
-        if (response.ok) {
-          // Перенаправление пользователя на форму оплаты Stripe
-          stripe.redirectToCheckout({ sessionId: session.sessionId });
-        } else {
-          // Обработка ошибок
-          console.error('Ошибка при создании сессии оплаты:', session.error);
-        }
-      } else {
-        console.error('Stripe не инициализирован');
-      }
-    };
 
   return (
     <section id='contact' className={styles.contact}>
@@ -44,12 +18,12 @@ const Contact = async () => {
           <div className={`${styles.contactFlex} ${styles.contactContent}`}>
               <h1 className={styles.contactTitle}>{contact.contactTitle}</h1>
               <p className={styles.contactDescription}>{contact.contactDescription}</p>
-            <button
+            {/* <button
               className={styles.buyLink}
-              // onClick={handleBuyClick}
             >
               Kup ze zniżką
-            </button>
+            </button> */}
+            <BuyButton>Kup ze zniżką</BuyButton>
           </div>
           <div className={styles.contactFlex}>
             <ul className={styles.contactBulletList}>

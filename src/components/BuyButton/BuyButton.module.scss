@@ -1,0 +1,28 @@
+.buyButton {
+  display: block;
+  text-align: center;
+  width: 250px;
+  font-size: 22px;
+  line-height: 1;
+  padding: 20px;
+  font-weight: 600;
+  background-color: #ff66c4;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 3px 3px 24px -6px rgba(255, 102, 196, 1);
+  -moz-box-shadow: 3px 3px 24px -6px rgba(255, 102, 196, 1);
+  box-shadow: 3px 3px 24px -6px rgba(255, 102, 196, 1);
+
+  &:hover {
+    background-color: #fff;
+    color: #ff66c4;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+}
