@@ -97,7 +97,8 @@ export async function getCourse(slug: string) {
   const result = await sanityClient.fetch<Course>(
     queries.getCourseQuery,
     { slug },
-    { cache: 'no-cache' }
+    // { cache: 'no-cache' }
+    {next: { revalidate: 3600 }}
   );
 
   return result;

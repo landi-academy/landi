@@ -1,4 +1,4 @@
-'use client';
+// 'use client';
 import { loadStripe } from '@stripe/stripe-js';
 import { Caveat } from "next/font/google";
 import styles from './Contact.module.scss';
@@ -46,7 +46,7 @@ const Contact = async () => {
               <p className={styles.contactDescription}>{contact.contactDescription}</p>
             <button
               className={styles.buyLink}
-              onClick={handleBuyClick}
+              // onClick={handleBuyClick}
             >
               Kupuj ze zniżką
             </button>
