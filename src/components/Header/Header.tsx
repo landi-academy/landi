@@ -142,9 +142,9 @@ const Header = () => {
       <div className="container">
         <div className={`${styles.headerWrapper} ${isMenuOpen ? styles.menuOpen : ''}`}>
           <div className={styles.logo}>
-            <Link  className={styles.logoLink} onClick={handleLinkClick} href="/">
+            <Link className={styles.logoLink} onClick={handleLinkClick} href="/">
               <Image
-                alt="Orzel Realty Logo"
+                alt="Landi Academy Logo"
                 src={urlFor(navbarData.logo).url()}
                 width={200}
                 height={200}
