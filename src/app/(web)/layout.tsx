@@ -3,7 +3,7 @@ import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import CardProvider from "@/components/Providers/Providers";
+// import CardProvider from "@/components/Providers/Providers";
 
 // const poppins = Poppins({ weight: ['100', '300', '400', '700', '900'], subsets: ["latin"] });
 const lato = Lato({ weight: ['100', '300', '400', '700', '900'], subsets: ["latin"] });
@@ -34,11 +34,11 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={lato.className}>
-        <CardProvider>
+        {/* <CardProvider> */}
           <Header />
           {children}
           <Footer />
-        </CardProvider>
+        {/* </CardProvider> */}
       </body>
     </html>
   );
