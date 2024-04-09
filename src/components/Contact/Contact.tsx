@@ -1,4 +1,4 @@
-import { Caveat } from "next/font/google";
+// import { Caveat } from "next/font/google";
 import styles from './Contact.module.scss';
 import { Contact as ContactType } from '@/types/contact';
 import { getContact } from '@/libs/apis';
@@ -7,7 +7,7 @@ import { urlFor } from '@/libs/sanity';
 import ContactForm from '../ContactForm/ContactForm';
 import Link from "next/link";
 
-const caveat = Caveat({ weight: ['400', '700'], subsets: ["latin"] });
+// const caveat = Caveat({ weight: ['400', '700'], subsets: ["latin"] });
 
 const Contact = async () => {
 
@@ -38,8 +38,8 @@ const Contact = async () => {
             </ul>
             <p className={styles.shortText}>{contact.shortText}</p>
               <div className={styles.priceBlock}>
-                <p className={`${styles.priceOld} ${caveat.className}`}>{contact.priceOld} zł</p>
-                <p className={`${styles.priceNew} ${caveat.className}`}>{contact.priceNew} zł</p>
+                <p className={`${styles.priceOld}`}>{contact.priceOld} zł</p>
+                <p className={`${styles.priceNew}`}>{contact.priceNew} zł</p>
               </div>
           </div>
           {/* <div className={`${styles.contactFlex}  ${styles.contactImage}`}>
