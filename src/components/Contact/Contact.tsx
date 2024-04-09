@@ -1,3 +1,4 @@
+'use client';
 import { loadStripe } from '@stripe/stripe-js';
 import { Caveat } from "next/font/google";
 import styles from './Contact.module.scss';
