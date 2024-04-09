@@ -46,9 +46,9 @@ const Reason = () => {
                 />
               </div>
               <div className={styles.buttonBlock}>
-                {/* <ScrollLink href="#contact">
+                <ScrollLink href="#contact">
                   <button className={styles.reasonBtn}>Kupić</button>
-                </ScrollLink> */}
+                </ScrollLink>
               </div>
             </div>
             <div className={styles.reasonFlex}>

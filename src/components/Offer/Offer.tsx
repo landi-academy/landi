@@ -31,9 +31,9 @@ const Offer = async () => {
             </ul>
             {/* <p className={styles.offerDescription}>{offer.description}</p> */}
             {/* <button className={styles.offerButton}>{offer.textButton}</button> */}
-            {/* <ScrollLink href="#contact">
+            <ScrollLink href="#contact">
               <button className={styles.offerButton}>{offer.textButton}</button>
-            </ScrollLink> */}
+            </ScrollLink>
           </div>
           <div className={styles.offerImage}>
             <Image
