@@ -48,7 +48,7 @@ const Contact = async () => {
               className={styles.buyLink}
               // onClick={handleBuyClick}
             >
-              Kupuj ze zniżką
+              Kup ze zniżką
             </button>
           </div>
           <div className={styles.contactFlex}>
