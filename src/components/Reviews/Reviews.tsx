@@ -52,12 +52,12 @@ const Reviews = () => {
           <ImageSlider images={reviews.images} />
         </div>
       </section>
-      {/* {showPopup && (
+      {showPopup && (
         <ModalOnScroll
           isOpen={showPopup}
           onClose={() => setShowPopup(false)}
         />
-      )} */}
+      )}
     </>
   );
 };

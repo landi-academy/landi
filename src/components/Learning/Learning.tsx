@@ -116,7 +116,7 @@ const Learning = async () => {
         <div className="container">
           <h2 className={styles.galleryTitle}>Pokażę Ci jak osiągnąć takie efekty</h2>
         </div>
-        <Carousel images={learning.images} />
+        {/* <Carousel images={learning.images} /> */}
       </div>
     </section>
   )
