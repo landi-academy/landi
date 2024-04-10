@@ -1,18 +1,18 @@
-import { createClient } from "next-sanity";
+// import { createClient } from "next-sanity";
 import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
 import { getCourseBySessionId } from '@/libs/apis'; // Импортируйте новую функцию
-import { fileUrl} from '@/libs/sanity'; // Импортируйте sanityClient
+import { fileUrl, sanityClient} from '@/libs/sanity'; // Импортируйте sanityClient
 import { useRouter } from "next/router";
 
-export const sanityClient = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
-  apiVersion: "2023-10-16",
-  useCdn: false,
-  token: process.env.SANITY_STUDIO_TOKEN,
-});
+// export const sanityClient = createClient({
+//   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
+//   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
+//   apiVersion: "2023-10-16",
+//   useCdn: false,
+//   token: process.env.SANITY_STUDIO_TOKEN,
+// });
 
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
