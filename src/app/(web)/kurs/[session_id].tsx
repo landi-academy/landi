@@ -1,4 +1,3 @@
-'use client';
 import { createClient } from "next-sanity";
 import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
