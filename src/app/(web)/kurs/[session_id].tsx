@@ -1,43 +1,24 @@
-'use client';
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
-import { getCourseBySessionId } from '@/libs/apis';
-import { fileUrl, sanityClient } from '@/libs/sanity';
-import { Course } from "@/types/course";
+import { getCourse } from '@/libs/apis';
+import { fileUrl } from '@/libs/sanity'
+
+type Props = {
+  params: {
+    slug: string;
+  };
+};
 
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
-const CoursePage = () => {
-  const router = useRouter();
-  const [course, setCourse] = useState<Course | null>(null);
-  const [loading, setLoading] = useState(true);
+const CoursePage = async ({ params }: Props) => {
 
-  useEffect(() => {
-    const loadCourse = async () => {
-      const session_id = typeof router.query.session_id === 'string' ? router.query.session_id : null;
-      if (!session_id) {
-        setLoading(false); // Сообщаем, что загрузка завершена, если session_id недоступен
-        return;
-      }
-      const courseData = await getCourseBySessionId(session_id, sanityClient);
-      setCourse(courseData);
-      setLoading(false);
-    };
-
-    if (router.isReady) {
-      loadCourse();
-    }
-  }, [router.isReady, router.query.session_id]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  const slug = params.slug;
+  const course = await getCourse(slug);
 
   if (!course) {
-    return <div>Session ID is missing or invalid, or course not found.</div>;
+    return <div>Loading...</div>;
   }
 
   const pdfUrl = course.pdfFile && course.pdfFile.asset ? fileUrl(course.pdfFile.asset._ref) : null;

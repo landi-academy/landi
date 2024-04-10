@@ -29,7 +29,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     try {
         await sanityClient.create({
         _type: 'courseAccess',
-        courseId: 'prod_PtUy08B8jxadVd', // Установите реальный идентификатор курса или извлеките его из сессии
+        courseId: 'prod_PtUy08B8jxadVd',
         slug: {
           _type: 'slug',
           current: uuidv4(),

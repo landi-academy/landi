@@ -103,9 +103,3 @@ export async function getCourse(slug: string) {
 
   return result;
 }
-
-export async function getCourseBySessionId(session_id: string, sanityClient: any) {
-  const result = await sanityClient.fetch(queries.getCourseByStripePurchaseIdQuery, { stripePurchaseId: session_id });
-
-  return result.course; // Предполагается, что результат содержит объект курса
-}
