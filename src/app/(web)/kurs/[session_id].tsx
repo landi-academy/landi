@@ -1,33 +1,38 @@
-// import { createClient } from "next-sanity";
-import { Big_Shoulders_Display } from "next/font/google";
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { Big_Shoulders_Display } from 'next/font/google';
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
-import { getCourseBySessionId } from '@/libs/apis'; // Импортируйте новую функцию
-import { fileUrl, sanityClient} from '@/libs/sanity'; // Импортируйте sanityClient
-import { useRouter } from "next/router";
-
-// export const sanityClient = createClient({
-//   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string,
-//   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET as string,
-//   apiVersion: "2023-10-16",
-//   useCdn: false,
-//   token: process.env.SANITY_STUDIO_TOKEN,
-// });
+import { getCourseBySessionId } from '@/libs/apis'; // Импортируйте функцию для получения курса по session_id
+import { fileUrl, sanityClient } from '@/libs/sanity';
+import { Course } from '@/types/course';
 
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
-const CoursePage = async () => {
+const CoursePage = () => {
   const router = useRouter();
-  // Убедитесь, что session_id является строкой
-  const session_id = typeof router.query.session_id === 'string' ? router.query.session_id : null;
+  const [course, setCourse] = useState<Course | undefined>(undefined);
 
-  if (!session_id) {
-    // Обработайте случай, когда session_id не предоставлен или не является строкой
-    return <div>Session ID is missing or invalid.</div>;
-  }
+  useEffect(() => {
+    const loadCourse = async () => {
+      // Убедитесь, что session_id является строкой
+      const session_id = typeof router.query.session_id === 'string' ? router.query.session_id : null;
 
-  // Используйте session_id для запроса данных курса
-  const course = await getCourseBySessionId(session_id, sanityClient);
+      if (!session_id) {
+        // Обработайте случай, когда session_id не предоставлен или не является строкой
+        console.error('Session ID is missing or invalid.');
+        return;
+      }
+
+      // Используйте session_id для запроса данных курса
+      const fetchedCourse = await getCourseBySessionId(session_id, sanityClient);
+      setCourse(fetchedCourse);
+    };
+
+    if (router.isReady) {
+      loadCourse();
+    }
+  }, [router.isReady, router.query.session_id]);
 
   if (!course) {
     return <div>Loading...</div>;
