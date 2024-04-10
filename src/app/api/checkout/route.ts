@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: `https://landi-academy.pl/kurs/kurs-tajemnice-nanoplastii`,
+      success_url: `${origin}/processing-payment?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/cancel`,
     });
 
