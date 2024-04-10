@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${origin}/kurs?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/cancel`,
     });
 

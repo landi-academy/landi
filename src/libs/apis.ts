@@ -103,3 +103,9 @@ export async function getCourse(slug: string) {
 
   return result;
 }
+
+export async function getCourseBySessionId(sessionId: string) {
+
+  const result = await sanityClient.fetch(queries.getCourseBySessionIdQuery, { sessionId });
+  return result.courseData;
+}

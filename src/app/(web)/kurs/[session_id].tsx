@@ -1,21 +1,31 @@
+'use client';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
-import { getCourse } from '@/libs/apis';
-import { fileUrl } from '@/libs/sanity'
-
-type Props = {
-  params: {
-    slug: string;
-  };
-};
+import { getCourseBySessionId } from '@/libs/apis';
+import { fileUrl } from '@/libs/sanity';
+import { Course } from '@/types/course';
 
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
-const CoursePage = async ({ params }: Props) => {
+const CoursePage = () => {
+  const router = useRouter();
+  const { session_id } = router.query; // Используйте session_id вместо slug
+  const [course, setCourse] = useState<Course | null>(null);
 
-  const slug = params.slug;
-  const course = await getCourse(slug);
+useEffect(() => {
+  // Приведение session_id к строке, если это массив
+  const sessionId = Array.isArray(session_id) ? session_id[0] : session_id;
+  if (!sessionId) return;
+  const fetchCourse = async () => {
+    const data = await getCourseBySessionId(sessionId);
+    setCourse(data);
+  };
+
+  fetchCourse();
+}, [session_id]);
 
   if (!course) {
     return <div>Loading...</div>;

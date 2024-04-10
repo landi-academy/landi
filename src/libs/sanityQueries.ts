@@ -135,3 +135,7 @@ export const getCourseQuery = groq`*[_type == "course" && slug.current == $slug]
   pdfFile,
   videoFile,
 }`;
+
+export const getCourseBySessionIdQuery = groq`*[_type == "courseAccess" && stripePurchaseId == $sessionId][0] {
+    "courseData": *[_type == "course" && _id == ^.courseId][0]
+}`;
