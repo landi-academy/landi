@@ -1,5 +1,5 @@
 'use client';
-import { useRouter } from 'next/router';
+import { useSearchParams, useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
@@ -11,9 +11,14 @@ import { Course } from '@/types/course';
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
 const CoursePage = () => {
-  const router = useRouter();
-  const { session_id } = router.query; // Используйте session_id вместо slug
+  // const router = useRouter();
+  // const { session_id } = router.query;
+  // const session_id = usePathname(); // Используйте session_id вместо slug
   // const [course, setCourse] = useState<Course | null>(null);
+
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // const session_id = searchParams.get('session_id');
+  const { session_id } = useParams();
 
 useEffect(() => {
   // Приведение session_id к строке, если это массив
