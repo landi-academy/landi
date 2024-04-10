@@ -1,33 +1,29 @@
-'use client';
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { Big_Shoulders_Display } from 'next/font/google';
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
-import { getCourseBySessionId } from '@/libs/apis'; // Импортируйте функцию для получения курса по session_id
+import { getCourseBySessionId } from '@/libs/apis';
 import { fileUrl, sanityClient } from '@/libs/sanity';
-import { Course } from '@/types/course';
+import { Course } from "@/types/course";
 
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
 const CoursePage = () => {
   const router = useRouter();
-  const [course, setCourse] = useState<Course | undefined>(undefined);
+  const [course, setCourse] = useState<Course | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadCourse = async () => {
-      // Убедитесь, что session_id является строкой
       const session_id = typeof router.query.session_id === 'string' ? router.query.session_id : null;
-
       if (!session_id) {
-        // Обработайте случай, когда session_id не предоставлен или не является строкой
-        console.error('Session ID is missing or invalid.');
+        setLoading(false); // Сообщаем, что загрузка завершена, если session_id недоступен
         return;
       }
-
-      // Используйте session_id для запроса данных курса
-      const fetchedCourse = await getCourseBySessionId(session_id, sanityClient);
-      setCourse(fetchedCourse);
+      const courseData = await getCourseBySessionId(session_id, sanityClient);
+      setCourse(courseData);
+      setLoading(false);
     };
 
     if (router.isReady) {
@@ -35,8 +31,12 @@ const CoursePage = () => {
     }
   }, [router.isReady, router.query.session_id]);
 
-  if (!course) {
+  if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (!course) {
+    return <div>Session ID is missing or invalid, or course not found.</div>;
   }
 
   const pdfUrl = course.pdfFile && course.pdfFile.asset ? fileUrl(course.pdfFile.asset._ref) : null;
