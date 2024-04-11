@@ -127,7 +127,7 @@ export const getFooterQuery = groq`*[_type == "footer"][0] {
   footerCopyRight
 }`;
 
-export const getCourseQuery = groq`*[_type == "course" && slug.current == $slug][0] {
+export const getCourseQuery = groq`*[_type == "course"][0] {
   _id,
   title,
   slug,
