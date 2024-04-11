@@ -56,8 +56,8 @@ const CoursePage = ({ params }: Props) => {
     <main className="course">
       <div className="container">
         <div className="courseWrapper">
-          <h1 className={`courseTitle ${bigShoulders.className}`}>Course Title Here</h1>
-          <p className='courseDescription'>Course description goes here.</p>
+          <h1 className={`courseTitle ${bigShoulders.className}`}>{course.title}</h1>
+          <p className='courseDescription'>{course.description}</p>
           {videoUrl && <VideoComponent videoUrl={videoUrl} />}
           {pdfUrl && <PdfLink pdfUrl={pdfUrl} />}
         </div>
