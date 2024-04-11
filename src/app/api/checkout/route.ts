@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
         quantity: 1,
       }],
       mode: 'payment',
-      success_url: `${origin}/api/payment-success`,
+      success_url: `${origin}/payment-success`,
       cancel_url: `${origin}/cancel`,
     });
 
