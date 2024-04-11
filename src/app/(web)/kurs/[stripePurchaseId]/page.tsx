@@ -17,7 +17,7 @@ const CoursePage = ({ params }: Props) => {
   const [accessDenied, setAccessDenied] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
   const searchParams = useSearchParams();
-  const stripePurchaseId = searchParams.get('stripePurchaseId');
+  const stripePurchaseId = 'cs_test_a1VF0jVv0EEheRIcyVfTOhT9pWpnnVGGfxtvoVfmj5WumYFJsx7JkHBAab';
 
 useEffect(() => {
   console.log('stripePurchaseId:', stripePurchaseId); // Проверяем получение параметра
