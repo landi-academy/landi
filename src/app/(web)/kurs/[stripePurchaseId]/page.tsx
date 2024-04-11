@@ -4,9 +4,8 @@ import { useEffect, useState } from 'react';
 import { Big_Shoulders_Display } from "next/font/google";
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
-import { fileUrl } from '@/libs/sanity'
-import { checkAccess, getCourse } from "@/libs/apis";
 import { Course } from "@/types/course";
+import { checkAccess, getCourse } from "@/libs/apis";
 
 type Props = {
   params: {
@@ -17,45 +16,46 @@ type Props = {
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
 const CoursePage = ({ params }: Props) => {
-
   const router = useRouter();
+  const [accessDenied, setAccessDenied] = useState(false);
+  const [hasAccess, setHasAccess] = useState(false);
   const searchParams = useSearchParams();
-  // const slug = params.slug;
-  // const { slug } = params;
   const stripePurchaseId = searchParams.get('stripePurchaseId');
-  const [course, setCourse] = useState<Course | null>(null);
 
   useEffect(() => {
-    // Проверяем доступ, используя stripePurchaseId
     if (stripePurchaseId) {
-      checkAccess(stripePurchaseId).then((hasAccess) => {
-        if (!hasAccess) {
-          router.push('/'); // Перенаправление при отсутствии доступа
+      // Предположим, что checkAccess возвращает true или false в зависимости от доступа
+      checkAccess(stripePurchaseId).then((access) => {
+        if (!access) {
+          setAccessDenied(true); // Если доступ закрыт, отобразим сообщение об этом
         } else {
-          // Загрузка и отображение данных курса при наличии доступа
-          getCourse(stripePurchaseId).then((courseData) => {
-            setCourse(courseData);
-          });
+          setHasAccess(true); // Если доступ открыт, позволим рендерить страницу
         }
       });
     }
-  }, [stripePurchaseId, searchParams]);
+  }, [stripePurchaseId]);
 
-  if (!course) {
-    return <div>Loading...</div>;
+  if (accessDenied) {
+    // Возвращаем сообщение о запрете доступа
+    return <div>Access Denied. Please <a href="/contact">contact support</a> if you think this is a mistake.</div>;
   }
 
-  const pdfUrl = course.pdfFile && course.pdfFile.asset ? fileUrl(course.pdfFile.asset._ref) : null;
-  const videoUrl = course.videoFile && course.videoFile.asset ? fileUrl(course.videoFile.asset._ref) : null;
+  if (!hasAccess) {
+    // Пока проверяем доступ, показываем загрузку
+    return <div>Loading for access...</div>;
+  }
 
+  // Как только доступ подтвержден, рендерим содержимое страницы
   return (
     <main className="course">
       <div className="container">
         <div className="courseWrapper">
-          <h1 className={`courseTitle ${bigShoulders.className}`}>{course.title}</h1>
-          <p className='courseDescription'>{course.description}</p>
-          {videoUrl && <VideoComponent videoUrl={videoUrl} />}
-          {pdfUrl && <PdfLink pdfUrl={pdfUrl} />}
+          <h1 className={`courseTitle ${bigShoulders.className}`}>Course Title Here</h1>
+          <p className='courseDescription'>Course description goes here.</p>
+          {/* Здесь могут быть другие компоненты, относящиеся к курсу, например, VideoComponent или PdfLink */}
+          {/* Пример: */}
+          {/* videoUrl && <VideoComponent videoUrl={videoUrl} /> */}
+          {/* pdfUrl && <PdfLink pdfUrl={pdfUrl} /> */}
         </div>
       </div>
     </main>
@@ -63,3 +63,5 @@ const CoursePage = ({ params }: Props) => {
 };
 
 export default CoursePage;
+
+// Обратите внимание, вам нужно будет определить функцию checkAccess и импортировать необходимые зависимости
