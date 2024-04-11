@@ -104,8 +104,11 @@ export async function getCourse(slug: string) {
   return result;
 }
 
-export async function getCourseBySessionId(sessionId: string) {
+export async function checkAccess(stripePurchaseId: string) {
+  const result = await sanityClient.fetch(
+    queries.checkCourseAccessQuery,
+    { stripePurchaseId }
+  );
 
-  const result = await sanityClient.fetch(queries.getCourseBySessionIdQuery, { sessionId });
-  return result.courseData;
+  return result ? true : false;
 }
