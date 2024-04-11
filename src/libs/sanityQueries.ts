@@ -130,7 +130,6 @@ export const getFooterQuery = groq`*[_type == "footer"][0] {
 export const getCourseQuery = groq`*[_type == "course"][0] {
   _id,
   title,
-  slug,
   description,
   pdfFile,
   videoFile,
