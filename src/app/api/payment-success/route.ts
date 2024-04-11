@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
 });
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function(req: NextApiRequest, res: NextApiResponse) {
   const { sessionId } = req.query;
 
   if (!sessionId || typeof sessionId !== 'string') {
