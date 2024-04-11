@@ -2,9 +2,6 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from 'react';
 import { Big_Shoulders_Display } from "next/font/google";
-import PdfLink from '@/components/PdfLink/PdfLink';
-import VideoComponent from '@/components/VideoComponent/VideoComponent';
-import { Course } from "@/types/course";
 import { checkAccess, getCourse } from "@/libs/apis";
 
 type Props = {
@@ -22,18 +19,21 @@ const CoursePage = ({ params }: Props) => {
   const searchParams = useSearchParams();
   const stripePurchaseId = searchParams.get('stripePurchaseId');
 
-  useEffect(() => {
-    if (stripePurchaseId) {
-      // Предположим, что checkAccess возвращает true или false в зависимости от доступа
-      checkAccess(stripePurchaseId).then((access) => {
-        if (!access) {
-          setAccessDenied(true); // Если доступ закрыт, отобразим сообщение об этом
-        } else {
-          setHasAccess(true); // Если доступ открыт, позволим рендерить страницу
-        }
-      });
-    }
-  }, [stripePurchaseId]);
+useEffect(() => {
+  console.log('stripePurchaseId:', stripePurchaseId); // Проверяем получение параметра
+  if (stripePurchaseId) {
+    checkAccess(stripePurchaseId).then((access) => {
+      console.log('Access:', access); // Проверяем результат функции
+      if (!access) {
+        setAccessDenied(true);
+      } else {
+        setHasAccess(true);
+      }
+    }).catch(error => {
+      console.error('Error checking access:', error); // Логируем возможные ошибки
+    });
+  }
+}, [stripePurchaseId]);
 
   if (accessDenied) {
     // Возвращаем сообщение о запрете доступа
