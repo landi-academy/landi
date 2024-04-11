@@ -1,8 +1,8 @@
 'use client';
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useEffect, useState } from 'react';
 import { Big_Shoulders_Display } from "next/font/google";
 import { checkAccess, getCourse } from "@/libs/apis";
+import { get } from 'http';
 
 type Props = {
   params: {
@@ -14,11 +14,9 @@ type Props = {
 const bigShoulders = Big_Shoulders_Display({ weight: ['400', '700'], subsets: ["latin"] });
 
 const CoursePage = ({ params }: Props) => {
-  const router = useRouter();
+
   const [accessDenied, setAccessDenied] = useState(false);
   const [hasAccess, setHasAccess] = useState(false);
-  const searchParams = useSearchParams();
-  // const stripePurchaseId = searchParams.get('stripePurchaseId');
   const stripePurchaseId = params.stripePurchaseId;
 
 useEffect(() => {
@@ -30,6 +28,11 @@ useEffect(() => {
         setAccessDenied(true);
       } else {
         setHasAccess(true);
+        getCourse(params.slug).then((course) => {
+          console.log('Course:', course); // Проверяем результат функции
+        }).catch(error => {
+          console.error('Error getting course:', error); // Логируем возможные ошибки
+        });
       }
     }).catch(error => {
       console.error('Error checking access:', error); // Логируем возможные ошибки
