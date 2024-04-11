@@ -93,12 +93,11 @@ export const getFooter = async () => {
   return result;
 }
 
-export async function getCourse(slug: string) {
+export async function getCourse() {
   const result = await sanityClient.fetch<Course>(
     queries.getCourseQuery,
-    { slug },
+    // { slug },
     // { cache: 'no-cache' }
-    {next: { revalidate: 3600 }}
   );
 
   return result;

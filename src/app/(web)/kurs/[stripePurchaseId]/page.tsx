@@ -28,7 +28,7 @@ useEffect(() => {
         setAccessDenied(true);
       } else {
         setHasAccess(true);
-        getCourse(params.slug).then((course) => {
+        getCourse().then((course) => {
           console.log('Course:', course); // Проверяем результат функции
         }).catch(error => {
           console.error('Error getting course:', error); // Логируем возможные ошибки
