@@ -60,6 +60,7 @@ const CoursePage = ({ params }: Props) => {
         <div className="courseWrapper">
           <h1 className={`courseTitle ${bigShoulders.className}`}>{course.title}</h1>
           <div className="courseContainer">
+            <h2 className="courseSubtitle">Обязательно сохрани эту ссылку, чтобы не потерять</h2>
             <p className='courseDescription'>{course.description}</p>
           </div>
           <div className="courseBlock">
