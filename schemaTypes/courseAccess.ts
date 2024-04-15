@@ -23,12 +23,6 @@ export default {
       type: 'datetime',
     },
     {
-      name: 'expiresAt',
-      title: 'Expires At',
-      type: 'datetime',
-      description: 'The date when the access expires',
-    },
-    {
       name: 'stripePurchaseId',
       title: 'Stripe Purchase ID',
       type: 'string',

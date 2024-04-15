@@ -6,6 +6,5 @@ export interface CourseAccess {
     current: string;
   };
   createdAt: string; // ISO строка даты
-  expiresAt: string; // ISO строка даты
   stripePurchaseId: string;
 }

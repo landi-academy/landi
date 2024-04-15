@@ -24,8 +24,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
   // Обработка события завершения сессии оплаты
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session;
-    const expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + 15); // Set expiration 15 days from now
 
     // Сохраняем документ в Sanity
     try {
@@ -37,7 +35,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
           current: uuidv4(),
         },
         createdAt: new Date().toISOString(),
-        expiresAt: expirationDate.toISOString(),
         stripePurchaseId: session.id,
       });
 
