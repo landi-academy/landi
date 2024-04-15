@@ -83,7 +83,7 @@ input[type="number"]::-webkit-outer-spin-button {
   font-size: clamp(2.25rem, 1.886rem + 1.82vw, 3.25rem);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   color: #ff66c4;
   text-transform: uppercase;
   text-align: center;
@@ -93,13 +93,36 @@ input[type="number"]::-webkit-outer-spin-button {
 .courseDescription {
   font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
   line-height: 1.5;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.courseContact {
+.courseBlock {
+  margin-bottom: 60px;
+}
+
+.courseSubtitle {
+  font-size: clamp(1.5rem, 1.2rem + 0.91vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #ff66c4;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(223, 63, 63, 0.5); /* Тень */
+  -webkit-text-stroke: 1px rgba(223, 63, 63, 0.5); /* Контур */
+}
+
+.courseText {
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.courseContainer {
   width: 100%;
-  padding: 50px 0;
+  padding-bottom: 50px;
 
   @media (min-width: 768px) {
     width: 70%;
@@ -124,4 +147,43 @@ input[type="number"]::-webkit-outer-spin-button {
   line-height: 1.5;
   margin-bottom: 40px;
   text-align: center;
+}
+
+.video {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+  &::after {
+    content: "";
+    background-color: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.courseContactForm {
+  width: 100%;
+  padding: 50px;
+  background-color: #363a3e;
+  border-radius: 20px;
+
+  @media (min-width: 768px) {
+    width: 70%;
+    margin: 0 auto;
+  }
 }

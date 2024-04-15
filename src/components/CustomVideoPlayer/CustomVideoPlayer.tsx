@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef } from 'react';
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player';
 
 const CustomVideoPlayer = ({ videoUrl }: any) => {
   const playerRef = useRef(null);

@@ -1,0 +1,23 @@
+.pdfBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.pdfLink {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ff66c4;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #ff66c4;
+    color: #fff;
+  }
+}

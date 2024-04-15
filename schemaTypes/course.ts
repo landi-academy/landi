@@ -30,18 +30,10 @@ export default {
       }
     },
     {
-      name: 'videoFile',
-      title: 'Video File',
-      type: 'file',
-      options: {
-        hotspot: true // Это позволит выбирать область для предварительного просмотра
-      }
-    },
-    {
-      name: 'videoId',
-      title: 'Video ID',
-      type: 'string',
-      description: 'Youtube video ID'
+      name: 'videoUrl',
+      title: 'Video URL',
+      type: 'url',
+      description: 'URL to the video file'
     }
   ]
 };

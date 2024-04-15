@@ -132,8 +132,7 @@ export const getCourseQueryTest = groq`*[_type == "course" && slug.current == $s
   title,
   description,
   pdfFile,
-  videoFile,
-  videoId,
+  videoUrl,
 }`;
 
 export const getCourseQuery = groq`*[_type == "course"][0] {
@@ -141,8 +140,7 @@ export const getCourseQuery = groq`*[_type == "course"][0] {
   title,
   description,
   pdfFile,
-  videoFile,
-  videoId,
+  videoUrl,
 }`;
 
 export const checkCourseAccessQuery = groq`*[_type == "courseAccess" && stripePurchaseId == $stripePurchaseId][0] {

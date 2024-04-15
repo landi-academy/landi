@@ -6,6 +6,7 @@ import { fileUrl } from '@/libs/sanity';
 import PdfLink from '@/components/PdfLink/PdfLink';
 import VideoComponent from '@/components/VideoComponent/VideoComponent';
 import { Course } from '@/types/course';
+import ContactCertificate from '@/components/ContactCertificate/ContactCertificate';
 
 type Props = {
   params: {
@@ -50,16 +51,44 @@ const CoursePage = ({ params }: Props) => {
   }
 
   const pdfUrl = course.pdfFile && course.pdfFile.asset ? fileUrl(course.pdfFile.asset._ref) : null;
-  const videoUrl = course.videoFile && course.videoFile.asset ? fileUrl(course.videoFile.asset._ref) : null;
+  // const videoUrl = course.videoFile && course.videoFile.asset ? fileUrl(course.videoFile.asset._ref) : null;
+  const videoUrl = course.videoUrl;
 
   return (
     <main className="course">
       <div className="container">
         <div className="courseWrapper">
           <h1 className={`courseTitle ${bigShoulders.className}`}>{course.title}</h1>
-          <p className='courseDescription'>{course.description}</p>
-          {videoUrl && <VideoComponent videoUrl={videoUrl} />}
-          {pdfUrl && <PdfLink pdfUrl={pdfUrl} />}
+          <div className="courseContainer">
+            <p className='courseDescription'>{course.description}</p>
+          </div>
+          <div className="courseBlock">
+            <h2 className="courseSubtitle">1. Część teoretyczna</h2>
+            <p className="courseText">Kliknij w poniższy link i otwórz e-book z częścią teoretyczną kursu.</p>
+            {pdfUrl && <PdfLink pdfUrl={pdfUrl} />}
+          </div>
+          <div className="courseBlock">
+            <h2 className="courseSubtitle">2. Część praktyczna</h2>
+            <p className="courseText">Obejrzyj poniższy film z częścią praktyczną kursu.</p>
+            {/* {course.videoId && (
+              <CustomVideoPlayer videoUrl={videoUrl} />
+            )} */}
+            <div className="video">
+              <iframe
+                src={videoUrl}
+                allow="autoplay"
+                allowFullScreen
+                className="responsive-iframe"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <div className="courseContainer">
+          <h2 className="courseContactTitle">3. Zdobądź swój certyfikat</h2>
+          <p className="courseContactText">Wpisz swoje imię i nazwisko w tym formularzu. W odpowiedzi prześlę Ci certyfikat e-mailem. Możesz go wydrukować lub opublikować na stronach z ofertami pracy.</p>
+          <div className="courseContactForm">
+            <ContactCertificate />
+          </div>
         </div>
       </div>
     </main>

@@ -58,7 +58,7 @@ const ContactCertificate: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
     try {
       const response = await axios.post('/api/email-cert', values);
       if (response.data.message === 'Email sent') {
-        setMessage('Dziękuję Wkrótce wyślę e-mailem Twój osobisty certyfikat :)');
+        setMessage('Dziękuję! Wkrótce wyślę e-mailem Twój osobisty certyfikat :)');
         resetForm({});
         setFilled({ name: false, phone: false, email: false }); // Reset the filled state
         setTimeout(() => {
