@@ -113,11 +113,23 @@ export async function getCourse() {
   return result;
 }
 
+// export async function checkAccess(stripePurchaseId: string) {
+//   const result = await sanityClient.fetch(
+//     queries.checkCourseAccessQuery,
+//     { stripePurchaseId }
+//   );
+
+//   return result ? true : false;
+// }
+
 export async function checkAccess(stripePurchaseId: string) {
   const result = await sanityClient.fetch(
     queries.checkCourseAccessQuery,
     { stripePurchaseId }
   );
 
-  return result ? true : false;
+  const now = new Date();
+  const accessValid = result && new Date(result.expiresAt) > now;
+
+  return accessValid ? true : false;
 }
