@@ -51,6 +51,12 @@ const Footer = async () => {
                 ))}
               </ul>
             </div>
+            <div className={styles.companyData}>
+              <p className={styles.companyDataText}>LANDI Group. Sp. z o.o.</p>
+              <p className={styles.companyDataText}>Jurajska 3/U02</p>
+              <p className={styles.companyDataText}>02-699 Warszawa, Polska</p>
+              <p className={styles.companyDataText}>NIP 9512489204</p>
+            </div>
           </div>
         </div>
         <div className={styles.copyrigth}>

@@ -19,28 +19,29 @@ const Reviews = () => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    // Убедимся, что модальное окно еще не показывалось в этой сессии
-    const isModalShown = sessionStorage.getItem('isModalShown') === 'true';
+  // useEffect(() => {
+  //   // Убедимся, что модальное окно еще не показывалось в этой сессии
+  //   const isModalShown = sessionStorage.getItem('isModalShown') === 'true';
     
-    if (reviews && !isModalShown) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting && !sessionStorage.getItem('isModalShown')) {
-            setShowPopup(true);
-            sessionStorage.setItem('isModalShown', 'true'); // Помечаем, что модальное окно было показано
-          }
-        },
-        { threshold: 0.3 }
-      );
+  //   if (reviews && !isModalShown) {
+  //     const observer = new IntersectionObserver(
+  //       (entries) => {
+  //         if (entries[0].isIntersecting && !sessionStorage.getItem('isModalShown')) {
+  //           setShowPopup(true);
+  //           sessionStorage.setItem('isModalShown', 'true'); // Помечаем, что модальное окно было показано
+  //         }
+  //       },
+  //       { threshold: 0.3 }
+  //     );
 
-      if (reviewsRef.current) {
-        observer.observe(reviewsRef.current);
-      }
+  //     if (reviewsRef.current) {
+  //       observer.observe(reviewsRef.current);
+  //     }
 
-      return () => observer.disconnect(); // Используем disconnect для чистки
-    }
-  }, [reviews]); // Зависимость от reviews гарантирует, что этот эффект проверит условие после загрузки отзывов
+  //     return () => observer.disconnect(); // Используем disconnect для чистки
+  //   }
+  // }, [reviews]);
+  // Зависимость от reviews гарантирует, что этот эффект проверит условие после загрузки отзывов
 
   if (!reviews) return <div>Loading...</div>;
 
@@ -52,12 +53,12 @@ const Reviews = () => {
           <ImageSlider images={reviews.images} />
         </div>
       </section>
-      {showPopup && (
+      {/* {showPopup && (
         <ModalOnScroll
           isOpen={showPopup}
           onClose={() => setShowPopup(false)}
         />
-      )}
+      )} */}
     </>
   );
 };

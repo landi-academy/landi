@@ -70,16 +70,16 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 /* ======== course page ========= */
-.course {
+.course,.privacyWrapper {
   margin-top: 75px;
 }
 
-.courseWrapper {
+.courseWrapper, .privacyWrapper {
   padding-top: 50px;
   padding-bottom: 50px;
 }
 
-.courseTitle {
+.courseTitle, .privacyTitle {
   font-size: clamp(2.25rem, 1.886rem + 1.82vw, 3.25rem);
   font-weight: 700;
   line-height: 1.2;
@@ -112,6 +112,8 @@ input[type="number"]::-webkit-outer-spin-button {
   text-shadow: 2px 2px 4px rgba(223, 63, 63, 0.5); /* Тень */
   -webkit-text-stroke: 1px rgba(223, 63, 63, 0.5); /* Контур */
 }
+
+
 
 .courseText {
   font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
@@ -186,4 +188,32 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 70%;
     margin: 0 auto;
   }
+}
+
+.privacySubtitle {
+  font-size: clamp(1.5rem, 1.2rem + 0.91vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #363a3e;
+  text-transform: uppercase;
+}
+
+.privacyH3 {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #363a3e;
+}
+
+.privacyText {
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.privacyLink {
+  color: #ff66c4;
+  text-decoration: underline;
 }

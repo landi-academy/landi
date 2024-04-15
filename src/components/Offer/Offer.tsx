@@ -4,6 +4,7 @@ import { getOfferSection } from '@/libs/apis';
 import styles from './Offer.module.scss';
 import Image from 'next/image';
 import { urlFor } from '@/libs/sanity';
+import BuyButton from "../BuyButton/BuyButton";
 
 import bgImage from '@/images/bg-img.png'
 import ScrollLink from "../ScrollLink/ScrollLink";
@@ -31,9 +32,10 @@ const Offer = async () => {
             </ul>
             {/* <p className={styles.offerDescription}>{offer.description}</p> */}
             {/* <button className={styles.offerButton}>{offer.textButton}</button> */}
-            <ScrollLink href="#contact">
+            {/* <ScrollLink href="#contact">
               <button className={styles.offerButton}>{offer.textButton}</button>
-            </ScrollLink>
+            </ScrollLink> */}
+            <BuyButton>Kup teraz</BuyButton>
           </div>
           <div className={styles.offerImage}>
             <Image
