@@ -1,0 +1,146 @@
+.inputWrapper {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.label {
+  display: block;
+  font-size: 0.9rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: #363a3e;
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+  z-index: 1;
+  cursor: text; /* Add this line to make the label cursor text-like */
+}
+
+.inputField {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #363a3e;
+  background-color: #fff;
+  border-radius: 20px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  color: #363a3e;
+}
+
+.labelFocused {
+  top: 5px;
+  font-size: 0.75rem;
+}
+
+.inputWrapper:focus-within .label,
+.inputField:not(:placeholder-shown) + .label {
+  top: 5px;
+  font-size: 0.75rem;
+}
+
+.sentBtn {
+  width: 100%;
+  padding: 15px;
+  font-size: 1rem;
+  border: 1px solid #ff66c4;
+  border-radius: 20px;
+  background-color: #ff66c4;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #fff;
+    color: #ff66c4;
+  }
+}
+
+.inputField:not(:placeholder-shown) + .label,
+.inputWrapper .label.filled {
+  top: 5px;
+  font-size: 0.75rem;
+}
+
+// -webkit-text-fill-color устанавливает цвет текста. Замените #fff на желаемый цвет текста.
+// -webkit-box-shadow используется для изменения фона поля. #363a3e — это цвет фона; замените его на цвет, который вы используете для полей ввода. Важно, что использование box-shadow вместо background-color позволяет обойти ограничения браузера на прямое изменение фона автозаполненных полей.
+// transition: background-color 5000s — это трюк, который замедляет любые попытки браузера изменить фон после автозаполнения, практически предотвращая его изменение.
+.inputField:-webkit-autofill,
+.inputField:-webkit-autofill:hover, 
+.inputField:-webkit-autofill:focus, 
+.inputField:-webkit-autofill:active  {
+    -webkit-text-fill-color: #363a3e !important; /* Цвет текста */
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset; /* Фон поля, замените на желаемый цвет */
+    transition: background-color 5000s ease-in-out 0s; /* Задержка изменения фона, чтобы предотвратить мерцание */
+}
+
+.error {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 15px;
+  font-size: 12px;
+  color: #ff66c4;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #23272c;
+  color: #ff66c4;
+  padding: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+  max-width: 500px;
+  font-size: clamp(1.25rem, 1.023rem + 1.14vw, 1.875rem);
+  text-align: center;
+  filter: drop-shadow(-3px -6px 12px #000000);
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.customCheckbox {
+  display: flex;
+  padding-inline: 10px;
+  margin-bottom: 20px;
+}
+
+.customCheckbox input[type="checkbox"] {
+  display: none;
+}
+
+.customCheckbox label {
+  position: relative;
+  padding-left: 30px; /* Отступ для визуального индикатора */
+  cursor: pointer;
+  font-size: 16px;
+  color: #363a3e;
+}
+
+.customCheckbox label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc; /* Граница неотмеченного чекбокса */
+  border-radius: 4px; /* Скругление углов для круглого чекбокса можно убрать */
+  background-color: white; /* Фон неотмеченного чекбокса */
+}
+
+.customCheckbox input[type="checkbox"]:checked + label::before {
+  background-color: #ff66c4; /* Цвет фона при активации */
+  border-color: #ff66c4; /* Цвет границы при активации */
+}
+
+.customCheckbox input[type="checkbox"]:checked + label::after {
+  content: '✔';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: white; /* Цвет галочки */
+  font-size: 18px;
+}

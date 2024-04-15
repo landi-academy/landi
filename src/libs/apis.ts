@@ -93,6 +93,16 @@ export const getFooter = async () => {
   return result;
 }
 
+export async function getCourseTest(slug: string) {
+  const result = await sanityClient.fetch<Course>(
+    queries.getCourseQueryTest,
+    { slug },
+    // { cache: 'no-cache' }
+  );
+
+  return result;
+}
+
 export async function getCourse() {
   const result = await sanityClient.fetch<Course>(
     queries.getCourseQuery,

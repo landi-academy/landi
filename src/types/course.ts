@@ -20,4 +20,5 @@ export type Course = {
   description: string;
   pdfFile: PdfFileType;
   videoFile: VideoFileType;
+  videoId: string;
 };

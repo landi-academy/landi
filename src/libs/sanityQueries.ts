@@ -127,12 +127,22 @@ export const getFooterQuery = groq`*[_type == "footer"][0] {
   footerCopyRight
 }`;
 
+export const getCourseQueryTest = groq`*[_type == "course" && slug.current == $slug][0] {
+  _id,
+  title,
+  description,
+  pdfFile,
+  videoFile,
+  videoId,
+}`;
+
 export const getCourseQuery = groq`*[_type == "course"][0] {
   _id,
   title,
   description,
   pdfFile,
   videoFile,
+  videoId,
 }`;
 
 export const checkCourseAccessQuery = groq`*[_type == "courseAccess" && stripePurchaseId == $stripePurchaseId][0] {

@@ -36,6 +36,12 @@ export default {
       options: {
         hotspot: true // Это позволит выбирать область для предварительного просмотра
       }
+    },
+    {
+      name: 'videoId',
+      title: 'Video ID',
+      type: 'string',
+      description: 'Youtube video ID'
     }
   ]
 };

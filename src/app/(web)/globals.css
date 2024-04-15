@@ -97,4 +97,31 @@ input[type="number"]::-webkit-outer-spin-button {
   text-align: center;
 }
 
-/*  */
+.courseContact {
+  width: 100%;
+  padding: 50px 0;
+
+  @media (min-width: 768px) {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+.courseContactTitle {
+  font-size: clamp(1.5rem, 1.2rem + 0.91vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 40px;
+  color: #ff66c4;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(223, 63, 63, 0.5); /* Тень */
+  -webkit-text-stroke: 1px rgba(223, 63, 63, 0.5); /* Контур */
+}
+
+.courseContactText {
+  font-size: clamp(1rem, 0.955rem + 0.23vw, 1.125rem);
+  line-height: 1.5;
+  margin-bottom: 40px;
+  text-align: center;
+}
