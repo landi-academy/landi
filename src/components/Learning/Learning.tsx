@@ -77,7 +77,7 @@ const Learning = async () => {
         <div className={styles.learningBlock}>
           <div className={styles.learningContent}>
             <div className={styles.learningText}>
-              <h3 className={styles.learningTitle}>Sertyfikat</h3>
+              <h3 className={styles.learningTitle}>Certyfikat</h3>
               <ul>
                 {learning?.certificateList.map((item) => (
                   <li className={styles.itemLabel} key={item._key}>

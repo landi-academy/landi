@@ -1,0 +1,33 @@
+.videoContainer {
+  position: relative;
+  width: 100%; /* Adjust based on your layout */
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  background-color: black;
+}
+
+.splashScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.splashImage {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}

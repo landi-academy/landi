@@ -103,7 +103,7 @@ const ContactCertificate: FC<ContactFormProps> = ({ onFormSubmitSuccess }) => {
               <label htmlFor="agreedToPolicy">Wyrażam zgodę na wysyłanie informacji handlowych i reklamowych na podany przeze mnie adres e-mail</label>
             </div>
             <div>
-              <button type='submit' className={styles.sentBtn} disabled={isSubmitting}>Uzyskać certyfikat</button>
+              <button type='submit' className={styles.sentBtn} disabled={isSubmitting}>Uzyskaj certyfikat</button>
             </div>
           </Form>
         )}

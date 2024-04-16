@@ -8,6 +8,8 @@ import VideoComponent from '@/components/VideoComponent/VideoComponent';
 import { Course } from '@/types/course';
 import ContactCertificate from '@/components/ContactCertificate/ContactCertificate';
 
+import splashImage from '../../splashImage.jpg';
+
 type Props = {
   params: {
     slug: string;
@@ -60,7 +62,7 @@ const CoursePage = ({ params }: Props) => {
         <div className="courseWrapper">
           <h1 className={`courseTitle ${bigShoulders.className}`}>{course.title}</h1>
           <div className="courseContainer">
-            <h2 className="courseSubtitle">Обязательно сохрани эту ссылку, чтобы не потерять</h2>
+            <h2 className="courseSubtitle">Koniecznie zachowaj link do tej strony aby mieć dostęp na szkolenie przez 14 dni.</h2>
             <p className='courseDescription'>{course.description}</p>
           </div>
           <div className="courseBlock">
@@ -86,7 +88,7 @@ const CoursePage = ({ params }: Props) => {
         </div>
         <div className="courseContainer">
           <h2 className="courseContactTitle">3. Zdobądź swój certyfikat</h2>
-          <p className="courseContactText">Wpisz swoje imię i nazwisko w tym formularzu. W odpowiedzi prześlę Ci certyfikat e-mailem. Możesz go wydrukować lub opublikować na stronach z ofertami pracy.</p>
+          <p className="courseContactText">Wpisz swoje imię i nazwisko w tym formularzu. W odpowiedzi prześlę Ci certyfikat e-mailem.</p>
           <div className="courseContactForm">
             <ContactCertificate />
           </div>
