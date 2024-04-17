@@ -2,7 +2,7 @@
   background-color: #23272c;
   color: #fff;
   padding-top: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
-  padding-bottom: clamp(5rem, 4.545rem + 2.27vw, 6.25rem);
+  padding-bottom: 30px;
 }
 
 .footerColumns {
@@ -63,6 +63,13 @@
 .copyrigth {
   margin-top: 14px;
   text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.developer {
   font-size: 14px;
   font-weight: 300;
+  text-align: center;
+  margin-top: 20px;
 }

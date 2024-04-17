@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
@@ -11,16 +12,11 @@ export const metadata: Metadata = {
   title: "Centrum Szkoleń Online Landi Academy",
   description: "Centrum Szkoleń Online Landi Academy",
   robots: {
-  index: false,
-  follow: false,
-  nocache: false,
+  index: true,
+  follow: true,
   googleBot: {
-    index: false,
-    follow: false,
-    noimageindex: true,
-    'max-video-preview': -1,
-    'max-image-preview': 'large',
-    'max-snippet': -1,
+    index: true,
+    follow: true,
   },
   },
 };
@@ -37,6 +33,7 @@ export default function RootLayout({
           {children}
           <Footer />
       </body>
+      <GoogleAnalytics gaId='G-15H1P4FH3Z' />
     </html>
   );
 }

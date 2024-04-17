@@ -62,6 +62,9 @@ const Footer = async () => {
         <div className={styles.copyrigth}>
           <p>&copy; 2024 Landi Academy. All rights reserved</p>
         </div>
+        <div className={styles.developer}>
+          <p>Created by <Link target='_blank' href="https://bandziuk.com">bandziuk</Link></p>
+        </div>
       </div>
     </footer>
   )
