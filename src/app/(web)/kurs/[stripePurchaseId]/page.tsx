@@ -8,7 +8,8 @@ import VideoComponent from '@/components/VideoComponent/VideoComponent';
 import { Course } from '@/types/course';
 import ContactCertificate from '@/components/ContactCertificate/ContactCertificate';
 
-import splashImage from '../../splashImage.jpg';
+import splashImage from '/public/splashImage.jpg';
+import CustomVideoPlayer from '@/components/CustomVideoPlayer/CustomVideoPlayer';
 
 type Props = {
   params: {
@@ -83,6 +84,7 @@ const CoursePage = ({ params }: Props) => {
                 allowFullScreen
                 className="responsive-iframe"
               ></iframe>
+               <CustomVideoPlayer videoUrl={videoUrl} splashUrl={splashImage.src} />
             </div>
           </div>
         </div>

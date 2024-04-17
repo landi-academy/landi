@@ -1,38 +1,32 @@
 'use client';
-'use client';
-import React, { useState, useRef } from 'react';
-import styles from './CustomVideoPlayer.module.scss';
+import Image from 'next/image';
+// components/VideoFrame.tsx
+import React, { useState } from 'react';
 
-interface CustomVideoPlayerProps {
+interface VideoFrameProps {
   videoUrl: string;
-  splashImageUrl?: string;
+  splashUrl: string;
 }
 
-const CustomVideoPlayer: React.FC<CustomVideoPlayerProps> = ({ videoUrl, splashImageUrl }) => {
-  const [showSplash, setShowSplash] = useState(true);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+const CustomVideoPlayer: React.FC<VideoFrameProps> = ({ videoUrl, splashUrl }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  const handleVideoStart = () => {
-    setShowSplash(false); // Hide splash screen
-    if (iframeRef.current?.contentWindow) {
-      iframeRef.current.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-    }
+  const handleSplashClick = () => {
+    setIsPlaying(true);
   };
 
   return (
-    <div className={styles.videoContainer}>
-      {showSplash && (
-        <div className={styles.splashScreen} onClick={handleVideoStart}>
-          <img src={splashImageUrl} alt="Click to play video" className={styles.splashImage} />
-        </div>
+    <div className="video-container" onClick={handleSplashClick}>
+      {!isPlaying ? (
+        <Image src={splashUrl} alt="Click to play" className="video-splash" layout="fill" objectFit="cover" />
+      ) : (
+        <iframe
+          src={videoUrl}
+          allow="autoplay"
+          allowFullScreen
+          className="responsive-iframe"
+        ></iframe>
       )}
-      <iframe
-        ref={iframeRef}
-        src={`${videoUrl}?enablejsapi=1`} // Enable JS API for iframe control
-        allow="autoplay"
-        allowFullScreen
-        className={`responsive-iframe ${styles.iframe}`}
-      ></iframe>
     </div>
   );
 };
