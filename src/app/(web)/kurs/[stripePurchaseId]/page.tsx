@@ -63,16 +63,18 @@ const CoursePage = ({ params }: Props) => {
         <div className="courseWrapper">
           <h1 className={`courseTitle ${bigShoulders.className}`}>{course.title}</h1>
           <div className="courseContainer">
-            <h2 className="courseSubtitle">Koniecznie zachowaj link do tej strony aby mieć dostęp na szkolenie przez 14 dni.</h2>
             <p className='courseDescription'>{course.description}</p>
           </div>
           <div className="courseBlock">
-            <h2 className="courseSubtitle">1. Część teoretyczna</h2>
+            <h2 className="courseSubtitle">1. Koniecznie zachowaj link do tej strony aby mieć dostęp na szkolenie przez 14 dni.</h2>
+          </div>
+          <div className="courseBlock">
+            <h2 className="courseSubtitle">2. Część teoretyczna</h2>
             <p className="courseText">Kliknij w poniższy link i otwórz e-book z częścią teoretyczną kursu.</p>
             {pdfUrl && <PdfLink pdfUrl={pdfUrl} />}
           </div>
           <div className="courseBlock">
-            <h2 className="courseSubtitle">2. Część praktyczna</h2>
+            <h2 className="courseSubtitle">3. Część praktyczna</h2>
             <p className="courseText">Obejrzyj poniższy film z częścią praktyczną kursu.</p>
             {/* {course.videoId && (
               <CustomVideoPlayer videoUrl={videoUrl} />
@@ -89,7 +91,7 @@ const CoursePage = ({ params }: Props) => {
           </div>
         </div>
         <div className="courseContainer">
-          <h2 className="courseContactTitle">3. Zdobądź swój certyfikat</h2>
+          <h2 className="courseContactTitle">4. Zdobądź swój certyfikat</h2>
           <p className="courseContactText">Wpisz swoje imię i nazwisko w tym formularzu. W odpowiedzi prześlę Ci certyfikat e-mailem.</p>
           <div className="courseContactForm">
             <ContactCertificate />
