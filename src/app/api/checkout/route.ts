@@ -18,7 +18,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
           product_data: {
             name: 'Szkolenie z Nanoplastii',
           },
-          unit_amount: 1000, // 10.00 PLN
+          unit_amount: 150000, // 1500.00 PLN
         },
         quantity: 1,
       }],
