@@ -82,11 +82,11 @@ const CoursePage = ({ params }: Props) => {
             <div className="video">
               <iframe
                 src={videoUrl}
-                allow="autoplay"
-                allowFullScreen
+                allow="fullscreen"
                 className="responsive-iframe"
+                width="100%"
+                height="100%"
               ></iframe>
-               <CustomVideoPlayer videoUrl={videoUrl} splashUrl={splashImage.src} />
             </div>
           </div>
         </div>
