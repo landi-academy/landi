@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { urlFor } from "@/libs/sanity";
 import ScrollLink from "../ScrollLink/ScrollLink";
 import BuyButton from "../BuyButton/BuyButton";
+import Animation from "../Animation/Animation";
 
 const Reason = () => {
 
@@ -37,15 +38,17 @@ const Reason = () => {
               />
             </div>
             <div className={styles.reasonFlex}>
-              <div className={styles.imageBlock}>
-                <Image
-                  src={urlFor(reason.image).url()}
-                  width={350}
-                  height={350}
-                  alt="landi academy"
-                  className={styles.img}
-                />
-              </div>
+              <Animation>
+                <div className={styles.imageBlock}>
+                  <Image
+                    src={urlFor(reason.image).url()}
+                    width={350}
+                    height={350}
+                    alt="landi academy"
+                    className={styles.img}
+                  />
+                  </div>
+              </Animation>
               <div className={styles.buttonBlock}>
                 {/* <ScrollLink href="#contact">
                   <button className={styles.reasonBtn}>Kup szkolenie</button>
