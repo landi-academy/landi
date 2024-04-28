@@ -10,7 +10,10 @@ const Animation = ({ children }: any) => {
   }, [])
 
   return (
-    <div data-aos="zoom-in">
+    <div
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+    >
       {children}
     </div>
   )
