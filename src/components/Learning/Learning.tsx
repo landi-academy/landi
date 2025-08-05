@@ -22,7 +22,7 @@ const Learning = async () => {
           <div className={styles.learningBlock}>
             <div className={styles.learningContent}>
               <div className={styles.learningText}>
-                <h3 className={styles.learningTitle}>Część teoretyczna</h3>
+                {/* <h3 className={styles.learningTitle}>Część teoretyczna</h3> */}
                 <p className={styles.learningSubtitle}>
                   Cena zabiegu zależy od długości i gęstości włosów.
                 </p>
