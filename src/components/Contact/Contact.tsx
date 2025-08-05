@@ -3,7 +3,7 @@ import { Caveat } from "next/font/google";
 import styles from "./Contact.module.scss";
 import { Contact as ContactType } from "@/types/contact";
 import { getContact } from "@/libs/apis";
-import BuyButton from "../BuyButton/BuyButton";
+import BuyLink from "../BuyLink/BuyLink";
 
 const caveat = Caveat({ weight: ["400", "700"], subsets: ["latin"] });
 
@@ -24,7 +24,8 @@ const Contact = async () => {
             >
               Kup ze zniżką
             </button> */}
-            <BuyButton>Kup ze zniżką</BuyButton>
+            {/* <BuyButton>Kup ze zniżką</BuyButton> */}
+            <BuyLink>Zarezerwuj termin</BuyLink>
           </div>
           <div className={styles.contactFlex}>
             <ul className={styles.contactBulletList}>

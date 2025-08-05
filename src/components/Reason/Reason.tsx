@@ -8,8 +8,8 @@ import { PortableText } from "@portabletext/react";
 import { useEffect, useState } from "react";
 import { urlFor } from "@/libs/sanity";
 import ScrollLink from "../ScrollLink/ScrollLink";
-import BuyButton from "../BuyButton/BuyButton";
 import Animation from "../Animation/Animation";
+import BuyLink from "../BuyLink/BuyLink";
 
 const Reason = () => {
   const [reason, setReason] = useState<WhySection | null>(null);
@@ -49,7 +49,8 @@ const Reason = () => {
                 {/* <ScrollLink href="#contact">
                   <button className={styles.reasonBtn}>Kup szkolenie</button>
                 </ScrollLink> */}
-                <BuyButton>Kup szkolenie</BuyButton>
+                {/* <BuyButton>Kup szkolenie</BuyButton> */}
+                <BuyLink>Zarezerwuj termin</BuyLink>
               </div>
             </div>
             <div className={styles.reasonFlex}>
