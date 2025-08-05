@@ -1,12 +1,11 @@
-import { Footer as FooterType } from '@/types/footer';
-import { getFooter } from '@/libs/apis';
-import { urlFor } from '@/libs/sanity';
-import styles from './Footer.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Footer as FooterType } from "@/types/footer";
+import { getFooter } from "@/libs/apis";
+import { urlFor } from "@/libs/sanity";
+import styles from "./Footer.module.scss";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = async () => {
-
   const footer: FooterType = await getFooter();
 
   return (
@@ -26,9 +25,7 @@ const Footer = async () => {
               <ul className={styles.linksList}>
                 {footer.footerMenuItems.map((item) => (
                   <li key={item.label} className={styles.listItem}>
-                    <Link href={item.link}>
-                      {item.label}
-                    </Link>
+                    <Link href={item.link}>{item.label}</Link>
                   </li>
                 ))}
               </ul>
@@ -39,7 +36,7 @@ const Footer = async () => {
               <ul className={styles.iconsList}>
                 {footer.footerSocialMedia.map((item) => (
                   <li key={item.label} className={styles.iconItem}>
-                    <Link target='_blank' href={item.link}>
+                    <Link target="_blank" href={item.link}>
                       <Image
                         src={urlFor(item.icon).url()}
                         width={30}
@@ -53,21 +50,26 @@ const Footer = async () => {
             </div>
             <div className={styles.companyData}>
               <p className={styles.companyDataText}>LANDI Group. Sp. z o.o.</p>
-              <p className={styles.companyDataText}>Jurajska 3/U02</p>
-              <p className={styles.companyDataText}>02-699 Warszawa, Polska</p>
+              {/* <p className={styles.companyDataText}>Jurajska 3/U02</p>
+              <p className={styles.companyDataText}>02-699 Warszawa, Polska</p> */}
               <p className={styles.companyDataText}>NIP 9512489204</p>
             </div>
           </div>
         </div>
         <div className={styles.copyrigth}>
-          <p>&copy; 2024 Landi Academy. All rights reserved</p>
+          <p>&copy; 2025 LanDi Room. All rights reserved</p>
         </div>
         <div className={styles.developer}>
-          <p>Created by <Link target='_blank' href="https://bandziuk.com">bandziuk</Link></p>
+          <p>
+            Created by{" "}
+            <Link target="_blank" href="https://bandziuk.com">
+              bandziuk
+            </Link>
+          </p>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

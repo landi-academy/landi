@@ -23,6 +23,9 @@ const Learning = async () => {
             <div className={styles.learningContent}>
               <div className={styles.learningText}>
                 <h3 className={styles.learningTitle}>Część teoretyczna</h3>
+                <p className={styles.learningSubtitle}>
+                  Cena zabiegu zależy od długości i gęstości włosów.
+                </p>
                 <ul>
                   {learning?.theoryList.map((item) => (
                     <li className={styles.itemLabel} key={item._key}>
