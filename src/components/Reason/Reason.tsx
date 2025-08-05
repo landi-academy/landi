@@ -1,18 +1,17 @@
-'use client';
-import { getWhySection } from "@/libs/apis"
-import { WhySection } from "@/types/whySection"
-import Image from "next/image"
-import styles from './Reason.module.scss';
+"use client";
+import { getWhySection } from "@/libs/apis";
+import { WhySection } from "@/types/whySection";
+import Image from "next/image";
+import styles from "./Reason.module.scss";
 import { RichText } from "../RichText/RichText";
-import { PortableText } from '@portabletext/react'
-import { useEffect, useState } from 'react';
+import { PortableText } from "@portabletext/react";
+import { useEffect, useState } from "react";
 import { urlFor } from "@/libs/sanity";
 import ScrollLink from "../ScrollLink/ScrollLink";
 import BuyButton from "../BuyButton/BuyButton";
 import Animation from "../Animation/Animation";
 
 const Reason = () => {
-
   const [reason, setReason] = useState<WhySection | null>(null);
 
   useEffect(() => {
@@ -28,14 +27,11 @@ const Reason = () => {
   return (
     <section id="reason" className={styles.reason}>
       <div className="container">
-        {/* <h2 className={styles.title}>{reason.title}</h2> */}
+        <h2 className={styles.title}>{reason.title}</h2>
         <div className={styles.reasonWrapper}>
           <div className={styles.reasonContent}>
             <div className={styles.reasonFlex}>
-              <PortableText
-                value={reason.bodyLeft}
-                components={RichText}
-              />
+              <PortableText value={reason.bodyLeft} components={RichText} />
             </div>
             <div className={styles.reasonFlex}>
               <Animation>
@@ -47,7 +43,7 @@ const Reason = () => {
                     alt="landi academy"
                     className={styles.img}
                   />
-                  </div>
+                </div>
               </Animation>
               <div className={styles.buttonBlock}>
                 {/* <ScrollLink href="#contact">
@@ -57,16 +53,13 @@ const Reason = () => {
               </div>
             </div>
             <div className={styles.reasonFlex}>
-              <PortableText
-                value={reason.bodyRight}
-                components={RichText}
-              />
+              <PortableText value={reason.bodyRight} components={RichText} />
             </div>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Reason
+export default Reason;

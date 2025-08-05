@@ -1,10 +1,10 @@
-'use client';
-import React, { useEffect, useRef, useState } from 'react';
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import { getReviewsPictures } from "@/libs/apis";
 import { ReviewsPictures } from "@/types/reviewsPictures";
-import styles from './Reviews.module.scss';
-import ImageSlider from '../ImageSlider/ImageSlider';
-import ModalOnScroll from '../ModalOnScroll/ModalOnScroll';
+import styles from "./Reviews.module.scss";
+import ImageSlider from "../ImageSlider/ImageSlider";
+import ModalOnScroll from "../ModalOnScroll/ModalOnScroll";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState<ReviewsPictures | null>(null);
@@ -22,7 +22,7 @@ const Reviews = () => {
   // useEffect(() => {
   //   // Убедимся, что модальное окно еще не показывалось в этой сессии
   //   const isModalShown = sessionStorage.getItem('isModalShown') === 'true';
-    
+
   //   if (reviews && !isModalShown) {
   //     const observer = new IntersectionObserver(
   //       (entries) => {
@@ -47,8 +47,8 @@ const Reviews = () => {
 
   return (
     <>
-      <section ref={reviewsRef} id='reviews' className={styles.reviews}>
-        <h2 className={styles.title}>Dostawaj takie opinie</h2>
+      <section ref={reviewsRef} id="reviews" className={styles.reviews}>
+        <h2 className={styles.title}>Klienci mówią o nas</h2>
         <div className={styles.reviewsWrapper}>
           <ImageSlider images={reviews.images} />
         </div>

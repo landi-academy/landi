@@ -1,7 +1,7 @@
 import { Big_Shoulders_Display } from "next/font/google";
 import { LearningSection } from "@/types/learningSection";
 import { getLearningSection } from "@/libs/apis";
-import styles from './Learning.module.scss';
+import styles from "./Learning.module.scss";
 import AccordionBlock from "../AccordionBlock/AccordionBlock";
 import Image from "next/image";
 import { urlFor } from "@/libs/sanity";
@@ -9,7 +9,6 @@ import Carousel from "../Carousel/Carousel";
 import Animation from "../Animation/Animation";
 
 const Learning = async () => {
-
   const learning: LearningSection = await getLearningSection();
 
   return (
@@ -30,7 +29,9 @@ const Learning = async () => {
                       {item.label}
                       <ul className={styles.subItems}>
                         {item.subMenu?.map((sub) => (
-                          <li className={styles.subLabel} key={sub._key}>{sub.subLabel}</li>
+                          <li className={styles.subLabel} key={sub._key}>
+                            {sub.subLabel}
+                          </li>
                         ))}
                       </ul>
                     </li>
@@ -49,7 +50,7 @@ const Learning = async () => {
             </div>
           </div>
         </Animation>
-        <Animation>
+        {/* <Animation>
           <div className={styles.learningBlock}>
             <div className={styles.learningImage}>
               <Image
@@ -117,16 +118,16 @@ const Learning = async () => {
               />
             </div>
           </div>
-        </Animation>
+        </Animation> */}
       </div>
       <div className={styles.gallery}>
         <div className="container">
-          <h2 className={styles.galleryTitle}>Pokażę Ci jak osiągnąć takie efekty</h2>
+          <h2 className={styles.galleryTitle}>Tak zmienią się Twoje włosy</h2>
         </div>
         <Carousel images={learning.images} />
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Learning
+export default Learning;
