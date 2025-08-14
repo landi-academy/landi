@@ -4,6 +4,7 @@ import Learning from "@/components/Learning/Learning";
 import Offer from "@/components/Offer/Offer";
 import Reason from "@/components/Reason/Reason";
 import Reviews from "@/components/Reviews/Reviews";
+import WhatsAppButton from "@/components/WhatsAppButton/WhatsAppButton";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Learning />
       <Reviews />
       <Contact />
+      <WhatsAppButton />
     </main>
   );
 }
