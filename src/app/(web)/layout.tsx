@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
@@ -32,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="pl">
       <body className={lato.className}>
+        <GoogleTagManager gtmId="GTM-MH4C7T2F" />
         <Header />
         {children}
         <Footer />
