@@ -4,6 +4,7 @@ import { Poppins, Lato } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import MicrosoftClarity from "@/components/MicrosoftClarity/MicrosoftClarity";
 
 // const poppins = Poppins({ weight: ['100', '300', '400', '700', '900'], subsets: ["latin"] });
 const lato = Lato({
@@ -33,6 +34,7 @@ export default function RootLayout({
     <html lang="pl">
       <body className={lato.className}>
         <GoogleTagManager gtmId="GTM-MH4C7T2F" />
+        <MicrosoftClarity />
         <Header />
         {children}
         <Footer />
